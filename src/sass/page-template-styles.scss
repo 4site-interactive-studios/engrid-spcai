@@ -17,7 +17,7 @@
   }
 
   // TYPOGRAPHY DEFAULT
-  --default_font-family: "Graphik",
+  --default_font-family: "Open Sans",
   "Arial",
   "sans-serif";
   // --default_color: initial;
@@ -26,16 +26,17 @@
   // --default_line-height: initial;
 
   // TYPOGRAPHY H1
-  --h1_font-family: "GraphikBlack",
+  --h1_font-family: "Oswald",
   "Arial Black",
   "sans-serif";
+  --h1_color: #163F58;
   // --h1_color: initial;
-  // --h1_font-size: calc(var(--root_font-size) * var(--scale-up_160pct));
+  --h1_font-size: calc(var(--root_font-size) * var(--scale-up_160pct));
   // --h1_font-weight: initial;
   // --h1_line-height: initial;
 
   // TYPOGRAPHY H2
-  --h2_font-family: "Graphik",
+  --h2_font-family: "Oswald",
   "Arial Black",
   "sans-serif";
   //--h2_color: #0057b8;
@@ -55,7 +56,7 @@
   // TYPOGRAPHY P
   // --p_font-family: var(--default_font-family);
   // --p_color: initial;
-  --p_font-size: 18px;
+  // --p_font-size: 18px;
   // --p_font-weight: initial;
   // --p_line-height: initial;
 
@@ -72,16 +73,16 @@
   --engrid__content_padding: 0px var(--spacing_lg);
 
   // TYPOGRAPHY INPUT
-  --input_font-family: "Graphik",
+  --input_font-family: "Open Sans",
   "Arial Black",
   "sans-serif";
-  --input_color: #000000;
+  --input_color: #000;
   // --input_font-size: var(--root_font-size);
   // --input_font-weight: initial;
   // --input_line-height: initial;
   --input_background-color: transparent;
   --input_border-width: 1px;
-   --input_border-color: #000;
+   --input_border-color: #163F58;
   --input_border-radius: 3px;
   --input_placeholder-color: #757575;
   --input_placeholder-font-weight: 500;
@@ -97,17 +98,19 @@
   // --input_box-shadow_hover: --input_box-shadow;
 
   // TYPOGRAPHY BUTTON
-  --button_font-family: "GraphikBlack",
+  --button_font-family: "Oswald",
   "Arial Black",
   "sans-serif";
-  --button_color: #000000;
+  --button_color: #163F58;
   // --button_font-size: var(--root_font-size);
   --button_font-weight: 600;
   // --button_line-height: initial;
   --button_background-color: #ffffff;
   --button_border-width: 1px;
-  --button_border-color: #000000;
+  --button_border-color: #163F58; 
   // --button_border-radius: 6px;
+
+  --donation-amount__button_font-size: 18px;
 
   // TYPOGRAPHY BUTTON:HOVER
   --button_color_hover: #ffffff;
@@ -115,8 +118,8 @@
   // --button_border-color_hover: var(--button_background-color_hover);
 
   // TYPOGRAPHY BUTTON:SELECTED
-  --button_color_checked: #000000;
-  --button_background-color_checked: #000000;
+  --button_color_checked: #163F58;
+  --button_background-color_checked: #163F58;
   // --button_border-color_checked: var(--button_border-color_hover);
 
   // DONATION PAGE
@@ -126,34 +129,38 @@
   --donation-amount__button_count: 3;
   --give-by-select__button_count: 1;
 
-  --donation-amount__button_background-color_checked: #000000;
-  --donation-amount__button_border-color_hover: #000000;
-  --donation-amount__button_border-color_checked: #000000;
+  --donation-amount__button_background-color_checked: #163F58;
+  --donation-amount__button_border-color_hover: #163F58;
+  --donation-amount__button_border-color_checked: #163F58;
 
-  --radio_font-family: "Graphik",
+  --radio_font-family: "Open Sans",
   "Arial",
   "sans-serif";
 
-  --recurring-frequency__button_background-color_hover: #000000;
-  --recurring-frequency__button_background-color_checked: #000000;
+  --recurring-frequency__button_background-color_hover: #163F58;
+  --recurring-frequency__button_background-color_checked: #163F58;
+
+  --label_color: #163F58;
+  --label_font-weight: 700;
+  --input_border-width: 2px;
 
   --submit__button_background-color: #ee3524;
-  --submit__button_background-color_hover: #000000;
-  --submit__button_border-color: #000000;
-  --submit__button_border-color_hover: #000000;
+  --submit__button_background-color_hover: #163F58;
+  --submit__button_border-color: #163F58;
+  --submit__button_border-color_hover: #163F58;
   --submit__button_font-size: 21px;
   --submit__button_color: #ffffff;
   --submit__button_color_hover: #ffffff;
 
   --checkbox_font-size: 14px;
   // this is defined & used only within this stylesheet
-  --strong_font-family: "GraphikSemiBold",
+  --strong_font-family: "Oswald",
   "Arial Black",
   "sans-serif";
 
-  --give-by-select__button_border-color_checked: #000000;
-  --give-by-select__button_border-color_hover: #000000;
-  --give-by-select__button_background-color_checked: #000000;
+  --give-by-select__button_border-color_checked: #163F58;
+  --give-by-select__button_border-color_hover: #163F58;
+  --give-by-select__button_background-color_checked: #163F58;
 
   --engrid__body-headerOutside_background-color: #ffffff;
 
@@ -162,11 +169,13 @@
   --fields_spacing-block: 6px;
 
   --checkbox_border-width: 2px;
-  --checkbox_border-color: #000;
+  --checkbox_border-color: #163F58;
   --checkbox_border-color_hover: #878787;
-  --checkbox_border-color_checked: #ee3524;
+  --checkbox_border-color_checked: #163F58;
+  --checkbox_background-color_checked: #163F58;
+  --checkbox_color_checked: #ffffff;
 
-  --engrid__content-footer_background-color: #000000;
+  --engrid__content-footer_background-color: #163F58;
   --engrid__content-footer_padding: calc(var(--spacing_lg) * 0.5) var(--spacing_lg);
 }
 
@@ -231,7 +240,7 @@ h3 {
   }
 
   [class*="validationFail"] label {
-    color: #000000;
+    color: #163F58;
   }
 
   .en__component .en__field__error {
@@ -243,7 +252,7 @@ h3 {
   }
 
   // .en__field__input {
-  //   border-bottom: 1px solid #000000;
+  //   border-bottom: 1px solid #163F58;
   // }
 
   .body-headerOutside>* {
@@ -253,17 +262,18 @@ h3 {
   }
 
   .body-title h1 {
-    font-size: 35px;
-    font-weight: 600;
+    //font-size: 35px;
+    font-weight: 400;
     line-height: 1.25em;
     margin-bottom: 0;
+    text-transform: uppercase
   }
 
   .en__field--recurrfreq {
     --recurring-frequency__button_border-width: 0;
     --recurring-frequency__button_border-radius: 0;
     --recurring-frequency__button_text-transform: uppercase;
-    --recurring-frequency__button_font-size: 14px;
+    --recurring-frequency__button_font-size: 24px;
     --recurring-frequency__button_padding: 1ch 0;
 
     // Accounts for use of "outline" over the traditional "border"
@@ -361,7 +371,7 @@ h3 {
   .en__field--donationAmt {
     --donation-amount__button_border-radius: 0;
 
-    --donation-amount__button_color: #000000;
+    --donation-amount__button_color: #163F58;
     --give-onetime-donation-amount-appended-label: "";
     --give-monthly-donation-amount-appended-label: "/mo";
     --give-quarterly-donation-amount-appended-label: "/qtr";
@@ -428,7 +438,7 @@ h3 {
 
         input {
           line-height: normal;
-          outline: 2px solid #000000;
+          outline: 2px solid #163F58;
           outline-offset: -1px;
           text-align: center;
           font-family: var(--donation-amount__button_font-family);
@@ -554,7 +564,7 @@ h3 {
     .body-headerOutside {
       margin-top: 2rem;
       padding-top: 1rem;
-      border-top: 10px solid #000000;
+      border-top: 10px solid #163F58;
     }
 
     #engrid {
