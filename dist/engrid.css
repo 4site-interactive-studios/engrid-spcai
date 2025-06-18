@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Wednesday, June 18, 2025 @ 14:10:31 ET
+ *  Date: Wednesday, June 18, 2025 @ 15:34:53 ET
  *  By: daryl
  *  ENGrid styles: v0.21.9
  *  ENGrid scripts: v0.21.11
@@ -7742,6 +7742,10 @@ body[data-engrid-debug]:before{
   --button_border-width:1px;
   --button_border-color:#163f58;
   --donation-amount__button_font-size:18px;
+  --donation-amount__button_background-color_hover:#163f58;
+  --donation-amount__button_color_hover:#fff;
+  --give-by-select__button_background-color_hover:#163f58;
+  --give-by-select__button_color_hover:#fff;
   --button_color_hover:#fff;
   --button_background-color_hover:#ffeffe;
   --button_color_checked:#163f58;
@@ -8022,7 +8026,7 @@ h3.section-header{
   outline-offset:-1px;
 }
 [data-engrid-theme=spcai] .en__submit button{
-  border-radius:100px;
+  border-radius:0;
   border-width:2px !important;
   margin-bottom:3rem;
 }
@@ -8101,11 +8105,19 @@ h3.section-header{
   }
 }
 [data-engrid-theme=spcai] .gift-summary{
-  border-color:#ee3524;
-  border-style:dashed;
-  border-width:1px 0;
+  border-color:#163f58;
+  border-style:solid;
+  border-width:4px 0;
   margin:30px auto;
   padding:20px !important;
+}
+[data-engrid-theme=spcai] .gift-summary .gift-summary__heart{
+  display:block;
+  margin:20px auto;
+  width:105px;
+}
+[data-engrid-theme=spcai] .gift-summary .gift-summary__heart img{
+  width:100%;
 }
 [data-engrid-theme=spcai] .gift-summary>img{
   display:block;

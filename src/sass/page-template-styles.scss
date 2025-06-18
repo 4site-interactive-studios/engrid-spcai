@@ -111,6 +111,11 @@
   // --button_border-radius: 6px;
 
   --donation-amount__button_font-size: 18px;
+  --donation-amount__button_background-color_hover: #163F58;
+  --donation-amount__button_color_hover: #ffffff;
+
+  --give-by-select__button_background-color_hover: #163F58;
+  --give-by-select__button_color_hover: #ffffff;
 
   // TYPOGRAPHY BUTTON:HOVER
   --button_color_hover: #ffffff;
@@ -499,7 +504,7 @@ h3 {
   }
 
   .en__submit button {
-    border-radius: 100px;
+    border-radius: 0;
     border-width: 2px !important;
     margin-bottom: 3rem;
   }
@@ -604,11 +609,21 @@ h3 {
   }
 
   .gift-summary {
-    border-width: 1px 0;
-    border-style: dashed;
-    border-color: #ee3524;
+    border-width: 4px 0;
+    border-style: solid;
+    border-color: #163F58;
     margin: 30px auto;
     padding: 20px !important;
+
+    .gift-summary__heart {
+      display: block;
+      margin: 20px auto;
+      width: 105px;
+
+      img {
+        width: 100%;
+      }
+    }
 
     >img {
       width: 64px;
