@@ -19,8 +19,8 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Sunday, September 7, 2025 @ 15:45:54 ET
- *  By: fernando
+ *  Date: Wednesday, October 1, 2025 @ 18:02:46 ET
+ *  By: Cawe Coy
  *  ENGrid styles: v0.22.18
  *  ENGrid scripts: v0.22.18
  *
@@ -8381,6 +8381,26 @@ body[data-engrid-debug]:before{
   [data-engrid-theme=spcai][data-engrid-layout=leftleft1col] .content-footer .footer-links a:not(:last-child):after{
     display:none;
   }
+}
+[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-banner,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-bannerOverlay,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-bottom,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-footer,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-footerOutside,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-header,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-headerOutside,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-main,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-title,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .body-top,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .content-footer,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .content-footerSpacer,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .content-header,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .content-preFooter,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .page-alert,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .page-backgroundImage,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .page-backgroundImageOverlay,[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .page-customCode{
+  --engrid__content-header_padding:30px 64px;
+  --engrid__content-header_margin:0;
+  --engrid__content-footer_padding:0px 64px 20px;
+  --engrid__content-footer_margin:0;
+  --engrid__content-footer_background-color:var(--color_navy);
+  --engrid__body_padding:0 64px;
+  --engrid__body-title_margin:0;
+  --engrid__body-top_margin:0;
+  --engrid__body-top_padding:30px 64px;
+  --engrid__body-main_padding:0 64px;
+  --click-to-expand__copy-area_height:195px;
+  --click-to-expand__cta-image_url:url(data:image/svg + xml;charset=utf-8,
+    %3Csvgwidth="10"height="14"fill="none"xmlns="http://www.w3.org/2000/svg"%3E%3Cpathd="M1.009 12.539 8.018 7l-7.01-5.538"stroke="%23163F58"stroke-width="2"/%3E%3C/svg%3E);
+  --click-to-expand__cta-image_width:250px;
+  --click-to-expand__cta-image_height:28px;
+}
+[data-engrid-theme=spcai][data-engrid-layout=leftleft1col][data-engrid-embedded] .content-footer{
+  margin-top:128px;
 }
 [data-engrid-theme=spcai][data-engrid-embedded-ecard=true] .en__component--ecardblock h2{
   font-size:20px;

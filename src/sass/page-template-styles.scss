@@ -770,6 +770,47 @@
         }
       }
     }
+    &[data-engrid-embedded] {
+      .page-alert,
+      .content-header,
+      .body-headerOutside,
+      .body-header,
+      .body-title,
+      .body-banner,
+      .body-bannerOverlay,
+      .body-top,
+      .body-main,
+      .body-bottom,
+      .body-footer,
+      .body-footerOutside,
+      .content-footerSpacer,
+      .content-preFooter,
+      .content-footer,
+      .page-backgroundImage,
+      .page-backgroundImageOverlay,
+      .page-customCode {
+        --engrid__content-header_padding: 30px 64px;
+        --engrid__content-header_margin: 0;
+        --engrid__content-footer_padding: 0px 64px 20px;
+        --engrid__content-footer_margin: 0;
+        --engrid__content-footer_background-color: var(--color_navy);
+        --engrid__body_padding: 0 64px;
+        --engrid__body-title_margin: 0;
+        --engrid__body-top_margin: 0;
+        --engrid__body-top_padding: 30px 64px;
+        --engrid__body-main_padding: 0 64px;
+        --click-to-expand__copy-area_height: 195px;
+        --click-to-expand__cta-image_url: url(
+          data:image/svg + xml;charset=utf-8,
+          %3Csvgwidth="10"height="14"fill="none"xmlns="http://www.w3.org/2000/svg"%3E%3Cpathd="M1.009 12.539 8.018 7l-7.01-5.538"stroke="%23163F58"stroke-width="2"/%3E%3C/svg%3E
+        );
+        --click-to-expand__cta-image_width: 250px;
+        --click-to-expand__cta-image_height: 28px;
+      }
+      .content-footer {
+        margin-top: 128px;
+      }
+    }
   }
   // ECARD
   // Custom property for ecard thumbnail border width
