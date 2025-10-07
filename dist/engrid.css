@@ -19,8 +19,8 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Wednesday, October 1, 2025 @ 18:02:46 ET
- *  By: Cawe Coy
+ *  Date: Tuesday, October 7, 2025 @ 13:51:20 ET
+ *  By: fernando
  *  ENGrid styles: v0.22.18
  *  ENGrid scripts: v0.22.18
  *
@@ -2866,7 +2866,8 @@ body:not(#en__pagebuilder) .click-to-expand:not(.expanded){
   overflow:hidden;
 }
 body:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-text-wrapper{
-  mask-image:linear-gradient(to bottom, #000 50%, #fff0 calc(100% - var(--click-to-expand__cta-image_height)));
+  -webkit-mask-image:linear-gradient(to bottom, #000 50%, #fff0 calc(100% - var(--click-to-expand__cta-image_height)));
+          mask-image:linear-gradient(to bottom, #000 50%, #fff0 calc(100% - var(--click-to-expand__cta-image_height)));
   max-height:calc(var(--click-to-expand__copy-area_height) - var(--click-to-expand__cta-image_height) - 35px);
 }
 body:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-cta{
@@ -8193,7 +8194,8 @@ body[data-engrid-debug]:before{
   position:relative;
 }
 [data-engrid-theme=spcai][data-engrid-layout=leftleft1col]:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-text-wrapper{
-  mask-image:linear-gradient(to bottom, #000 50%, #fff0 calc(100% - var(--click-to-expand__cta-image_height) - 13px));
+  -webkit-mask-image:linear-gradient(to bottom, #000 50%, #fff0 calc(100% - var(--click-to-expand__cta-image_height) - 13px));
+          mask-image:linear-gradient(to bottom, #000 50%, #fff0 calc(100% - var(--click-to-expand__cta-image_height) - 13px));
 }
 [data-engrid-theme=spcai][data-engrid-layout=leftleft1col] .en__field--give-by-select .en__field__item>label{
   align-items:center;
@@ -8483,7 +8485,8 @@ body[data-engrid-debug]:before{
   width:2rem;
 }
 [data-engrid-theme=spcai] .ecardrecipient__name{
-  mask-image:linear-gradient(90deg, #000 75%, #fff0 calc(100% - 1rem));
+  -webkit-mask-image:linear-gradient(90deg, #000 75%, #fff0 calc(100% - 1rem));
+          mask-image:linear-gradient(90deg, #000 75%, #fff0 calc(100% - 1rem));
   outline:none;
   padding-right:1rem;
 }
