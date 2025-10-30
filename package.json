@@ -26,8 +26,8 @@
   "license": "Unlicense",
   "url": "https://github.com/4site-interactive-studios/engrid",
   "devDependencies": {
-    "@4site/engrid-scripts": "*",
-    "@4site/engrid-styles": "*",
+    "@4site/engrid-scripts": "https://gitpkg.vercel.app/StoneMoney/engrid/packages/scripts?inmem-ecard-visibility",
+    "@4site/engrid-styles": "https://gitpkg.vercel.app/StoneMoney/engrid/packages/styles?inmem-ecard-visibility",
     "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-class-properties": "7.13.0",
     "@babel/plugin-proposal-object-rest-spread": "7.14.2",
