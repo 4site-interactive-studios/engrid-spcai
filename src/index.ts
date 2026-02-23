@@ -4,6 +4,7 @@ import {
   DonationAmount,
   DonationFrequency,
   EnForm,
+  OptInLadder,
 } from "@4site/engrid-scripts"; // Uses ENGrid via NPM
 // import {
 //   Options,
@@ -35,9 +36,14 @@ const options: Options = {
       "Custom Amount",
     "input#en__field_supporter_phoneNumber2": "Phone Number (Optional)",
   },
+  OptInLadder: {
+    iframeUrl: "https://donate.spcai.org/page/186547/data/1?chain&engrid_hide[body-headerOutside]=class&engrid_hide[body-banner]=class&engrid_hide[content-footer]=class&engrid_hide[page-backgroundImage]=class&engrid_hide[content-header]=class",
+    excludePageIDs: ["185332"],
+  },
   onLoad: () => {
     (<any>window).DonationLightboxForm = DonationLightboxForm;
     new DonationLightboxForm(DonationAmount, DonationFrequency, App);
+    new OptInLadder();
     customScript(App, EnForm);
   },
   onResize: () => App.log("Starter Theme Window Resized"),
