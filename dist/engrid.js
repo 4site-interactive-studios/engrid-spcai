@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Monday, February 23, 2026 @ 13:02:04 ET
+ *  Date: Tuesday, February 24, 2026 @ 13:48:39 ET
  *  By: nick
  *  ENGrid styles: v0.23.4
  *  ENGrid scripts: v0.23.11
@@ -25131,10 +25131,6 @@ const options = {
   Placeholders: {
     ".en__field--donationAmt.en__field--withOther .en__field__input--other": "Custom Amount",
     "input#en__field_supporter_phoneNumber2": "Phone Number (Optional)"
-  },
-  OptInLadder: {
-    iframeUrl: "https://donate.spcai.org/page/186547/data/1?chain&engrid_hide[body-headerOutside]=class&engrid_hide[body-banner]=class&engrid_hide[content-footer]=class&engrid_hide[page-backgroundImage]=class&engrid_hide[content-header]=class",
-    excludePageIDs: ["185332"]
   },
   onLoad: () => {
     window.DonationLightboxForm = DonationLightboxForm;
