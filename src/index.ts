@@ -4,7 +4,6 @@ import {
   DonationAmount,
   DonationFrequency,
   EnForm,
-  OptInLadder,
 } from "@4site/engrid-scripts"; // Uses ENGrid via NPM
 // import {
 //   Options,
@@ -18,6 +17,7 @@ import "./sass/main.scss";
 import DonationLightboxForm from "./scripts/donation-lightbox-form";
 import { customScript } from "./scripts/main";
 import { sendSupporterDataToTatango } from "./scripts/tatango";
+import { OptInLadder } from "./scripts/optin-ladder";
 
 const options: Options = {
   applePay: false,
