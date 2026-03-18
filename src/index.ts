@@ -11,13 +11,13 @@ import {
 //   DonationAmount,
 //   DonationFrequency,
 //   EnForm,
+//   OptInLadder,
 // } from "../../engrid/packages/scripts"; // Uses ENGrid via Visual Studio Workspace
 
 import "./sass/main.scss";
 import DonationLightboxForm from "./scripts/donation-lightbox-form";
 import { customScript } from "./scripts/main";
 import { sendSupporterDataToTatango } from "./scripts/tatango";
-import { OptInLadder } from "./scripts/optin-ladder";
 
 const options: Options = {
   applePay: false,
