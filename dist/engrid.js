@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Monday, June 1, 2026 @ 17:12:44 ET
+ *  Date: Wednesday, June 24, 2026 @ 12:58:05 ET
  *  By: fernando
  *  ENGrid styles: v0.25.6
  *  ENGrid scripts: v0.25.6
@@ -25750,8 +25750,9 @@ class DonationLightboxForm {
         }, 100);
       } else {
         App.watchForError(() => {
+          this.sendMessage("status", "loaded");
           const errorMessage = document.querySelector(".en__error");
-          const errorMessageText = errorMessage && errorMessage.textContent.split(". ").length > 1 ? errorMessage.textContent.split(". ")[1] : errorMessage.textContent;
+          const errorMessageText = errorMessage?.textContent ? errorMessage.textContent.split(". ").length > 1 ? errorMessage.textContent.split(". ")[1] : errorMessage.textContent : null;
           if (errorMessageText) {
             this.sendMessage("error", errorMessageText);
           }

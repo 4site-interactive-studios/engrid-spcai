@@ -169,11 +169,13 @@ export default class DonationLightboxForm {
         }, 100);
       } else {
         App.watchForError(() => {
+          this.sendMessage("status", "loaded");
           const errorMessage = document.querySelector(".en__error");
-          const errorMessageText =
-            errorMessage && errorMessage.textContent.split(". ").length > 1
+          const errorMessageText = errorMessage?.textContent
+            ? errorMessage.textContent.split(". ").length > 1
               ? errorMessage.textContent.split(". ")[1]
-              : errorMessage.textContent;
+              : errorMessage.textContent
+            : null;
           if (errorMessageText) {
             this.sendMessage("error", errorMessageText);
           }
