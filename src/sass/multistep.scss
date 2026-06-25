@@ -493,6 +493,10 @@
           // scroll-snap-align: start;
           & > .en__component {
             height: calc(100% - 4rem);
+
+            @media (max-width: 768px) {
+              height: calc(100% + 0.5rem);
+            }
           }
         }
 
