@@ -866,6 +866,11 @@
         form.en__component > .en__component {
           padding: 35px 40px;
         }
+        .new-signup-lightbox {
+          form.en__component>.en__component {
+            padding: 16px;
+          }
+        }
         .radio-to-buttons_recurrfreq .en__field--recurrfreq {
           top: 0;
           margin: 13px auto;
