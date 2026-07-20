@@ -877,6 +877,10 @@
           top: 0;
           margin: 13px auto;
         }
+        
+        .new-signup-lightbox form.en__component>.en__component>.en__component {
+          height: calc(100% - 4rem);
+        }
       }
     }
     iframe[title^="recaptcha"] {
