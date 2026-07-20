@@ -513,7 +513,7 @@
         }
       }
 
-      .new-signup-lightbox form.en__component > .en__component {
+      .new-signup-lightbox form.en__component>.en__component>.en__component {
         height: calc(100% - 2rem);
       }
 
