@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Thursday, August 6, 2026 @ 11:48:23 ET
+ *  Date: Thursday, August 6, 2026 @ 13:31:08 ET
  *  By: fernando
  *  ENGrid styles: v0.27.0
  *  ENGrid scripts: v0.27.1
@@ -8834,6 +8834,9 @@ body[data-engrid-debug]:before{
   margin-bottom:0;
   padding-bottom:0;
 }
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-embedded] .new-signup-lightbox form.en__component>.en__component>.en__component{
+  height:calc(100% - 2rem);
+}
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-embedded] .en__errorHeader,[data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-embedded] .en__errorList,[data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-embedded] .en__submit{
   display:none;
 }
@@ -9055,9 +9058,15 @@ body[data-engrid-debug]:before{
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep]:not(#en__pagebuilder).is-mobile form.en__component>.en__component{
   padding:35px 40px;
 }
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep]:not(#en__pagebuilder).is-mobile .new-signup-lightbox form.en__component>.en__component{
+  padding:0;
+}
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep]:not(#en__pagebuilder).is-mobile .radio-to-buttons_recurrfreq .en__field--recurrfreq{
   margin:13px auto;
   top:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep]:not(#en__pagebuilder).is-mobile .new-signup-lightbox form.en__component>.en__component>.en__component{
+  height:calc(100% - 4rem) !important;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep] iframe[title^=recaptcha]{
   left:-1px;

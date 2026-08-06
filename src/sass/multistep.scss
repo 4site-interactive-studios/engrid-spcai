@@ -513,6 +513,10 @@
         }
       }
 
+      .new-signup-lightbox form.en__component>.en__component>.en__component {
+        height: calc(100% - 2rem);
+      }
+
       .en__submit,
       .en__errorHeader,
       .en__errorList {
@@ -866,9 +870,16 @@
         form.en__component > .en__component {
           padding: 35px 40px;
         }
+        .new-signup-lightbox form.en__component > .en__component {
+          padding: 0;
+        }
         .radio-to-buttons_recurrfreq .en__field--recurrfreq {
           top: 0;
           margin: 13px auto;
+        }
+        
+        .new-signup-lightbox form.en__component>.en__component>.en__component {
+          height: calc(100% - 4rem) !important;
         }
       }
     }
