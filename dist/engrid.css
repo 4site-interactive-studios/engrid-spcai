@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Tuesday, October 6, 2026 @ 13:41:46 ET
+ *  Date: Tuesday, October 6, 2026 @ 15:27:45 ET
  *  By: nick
  *  ENGrid styles: v0.28.3
  *  ENGrid scripts: v0.28.5
@@ -9240,6 +9240,8 @@ body[data-engrid-debug]:before{
   --label_font-size:16px;
   --input_padding:8px 10px;
   --input_font-size:20px;
+  --checkbox_font-size:16px;
+  --checkbox_line-height:22px;
   --error_color:#e22028;
   --fields_spacing-inline:5px;
   --fields_spacing-block:4px;
@@ -9284,8 +9286,15 @@ body[data-engrid-debug]:before{
   text-align:right;
   width:calc(100% - 100px);
 }
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] input[type=checkbox]+label{
+  align-items:flex-start;
+}
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--ccexpire .en__field__input--vgs,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--ccnumber .en__field__input--vgs,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--ccvv .en__field__input--vgs{
   height:54px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__component.en__component--copyblock>*{
+  padding-left:var(--fields_spacing-inline);
+  padding-right:var(--fields_spacing-inline);
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__component--formblock,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__component--svblock,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__registrants__registrantDetails{
   margin-left:0;
@@ -9298,6 +9307,17 @@ body[data-engrid-debug]:before{
   margin-right:0;
   margin-top:2px;
   width:20px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio .en__field__element .en__field__item label:after{
+  font-family:var(--donation-amount__button_font-family);
+  font-size:var(--donation-amount__button_font-size);
+  line-height:var(--donation-amount__button_line-height);
+  opacity:1;
+  padding-top:unset;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio .en__field__element .en__field__item label .engrid-currency-symbol{
+  font-size:var(--donation-amount__button_font-size);
+  margin-right:2px;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio .en__field__element .en__field__item--other{
   --input_font-size:24px;
@@ -9342,6 +9362,8 @@ body[data-engrid-debug]:before{
   font-size:20px;
   font-weight:700;
   gap:8px;
+  padding-left:var(--fields_spacing-inline);
+  padding-right:var(--fields_spacing-inline);
   text-align:center;
   text-transform:uppercase;
 }
@@ -9507,10 +9529,6 @@ body[data-engrid-debug]:before{
   background-position:50%;
   background-size:30px !important;
 }
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--checkbox{
-  --checkbox_font-size:14px;
-  --checkbox_line-height:18.2px;
-}
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--checkbox>label{
   display:none !important;
 }
@@ -9532,7 +9550,7 @@ body[data-engrid-debug]:before{
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] form.en__component>.en__component{
   height:100vh;
   padding:0;
-  width:300px;
+  width:310px;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] form.en__component>.en__component>.en__component{
   height:calc(100% - 4rem);

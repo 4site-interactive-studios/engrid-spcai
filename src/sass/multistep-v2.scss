@@ -23,6 +23,8 @@
   --label_font-size: 16px;
   --input_padding: 8px 10px;
   --input_font-size: 20px;
+  --checkbox_font-size: 16px;
+  --checkbox_line-height: 22px;
 
   --error_color: #e22028;
 
@@ -149,11 +151,19 @@
         padding: 5px 0;
       }
     }
+    input[type="checkbox"] + label {
+      align-items: flex-start;
+    }
 
     .en__field--ccexpire .en__field__input--vgs,
     .en__field--ccnumber .en__field__input--vgs,
     .en__field--ccvv .en__field__input--vgs {
       height: 54px;
+    }
+
+    .en__component.en__component--copyblock > * {
+      padding-left: var(--fields_spacing-inline);
+      padding-right: var(--fields_spacing-inline);
     }
 
     .en__component--formblock,
@@ -174,6 +184,28 @@
       margin-right: 0px;
       margin-top: 2px;
       width: 20px;
+    }
+
+    .radio-to-buttons_donationAmt
+      .en__field--donationAmt.en__field--radio
+      .en__field__element
+      .en__field__item
+      label::after {
+      font-size: var(--donation-amount__button_font-size);
+      line-height: var(--donation-amount__button_line-height);
+      opacity: 1;
+      padding-top: unset;
+      font-family: var(--donation-amount__button_font-family);
+    }
+
+    .radio-to-buttons_donationAmt
+      .en__field--donationAmt.en__field--radio
+      .en__field__element
+      .en__field__item
+      label
+      .engrid-currency-symbol {
+      font-size: var(--donation-amount__button_font-size);
+      margin-right: 2px;
     }
 
     .radio-to-buttons_donationAmt
@@ -231,6 +263,8 @@
         text-align: center;
         gap: 8px;
         font-family: "Oswald", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        padding-left: var(--fields_spacing-inline);
+        padding-right: var(--fields_spacing-inline);
         &::before,
         &::after {
           content: "";
@@ -599,8 +633,6 @@
       background-position: center;
     }
     .en__field--checkbox {
-      --checkbox_font-size: 14px;
-      --checkbox_line-height: 18.2px;
       > label {
         display: none !important;
       }
@@ -686,7 +718,7 @@
 
         & > .en__component {
           height: 100vh;
-          width: 300px;
+          width: 310px;
           // padding: 45px 40px;
           padding: 0px;
           // scroll-snap-align: start;

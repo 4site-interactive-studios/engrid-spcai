@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Tuesday, October 6, 2026 @ 13:41:46 ET
+ *  Date: Tuesday, October 6, 2026 @ 15:27:45 ET
  *  By: nick
  *  ENGrid styles: v0.28.3
  *  ENGrid scripts: v0.28.5
@@ -29160,6 +29160,12 @@ class donation_lightbox_form_v2_DonationLightboxForm {
   scrollToSection(sectionId, fromSectionId) {
     console.log("DonationLightboxForm: scrollToSection", sectionId);
     const section = document.querySelector(`[data-section-id="${sectionId}"]`);
+    // Reset the payment method to "card" when landing on the section that
+    // contains the payment method selector, so a previously selected
+    // wallet/bank option doesn't stick when revisiting the payment step
+    if (section && section.querySelector("input[name='transaction.giveBySelect'], .payment-options")) {
+      this.resetPaymentToCard();
+    }
     // Check if we're scrolling to an invisible section
     if (section && !this.isVisible(section)) {
       console.log("DonationLightboxForm: scrollToSection: Section is not visible");
@@ -29632,6 +29638,23 @@ class donation_lightbox_form_v2_DonationLightboxForm {
       paymentType.value = "card";
     }
     paymentType.dispatchEvent(new Event("change"));
+  }
+  // Reset the payment method back to "card" when the payment step is
+  // (re)visited: set the transaction.paymenttype field, silently clear any
+  // selected giveBySelect radio (checking the card one if it exists), and
+  // restore card section visibility. Radio change events must not be
+  // dispatched here because their handler auto-advances to the next section.
+  resetPaymentToCard() {
+    const paymentType = document.querySelector("#en__field_transaction_paymenttype");
+    if (!paymentType) return;
+    const isCard = ["card", "creditcard", "visa", "vi", "mastercard", "mc", "amex", "ax", "discover", "di", "diners", "dc", "jcb", "jc"].includes(paymentType.value.toLowerCase());
+    const checkedNonCard = Array.from(document.querySelectorAll("input[name='transaction.giveBySelect']:checked")).some(radio => radio.value.toLowerCase() !== "card");
+    if (isCard && !checkedNonCard) return;
+    this.setCardPaymentType();
+    document.querySelectorAll("input[name='transaction.giveBySelect']").forEach(radio => {
+      radio.checked = radio.value.toLowerCase() === "card";
+    });
+    this.showHideDynamicSection("card");
   }
   // paymentType is any of the values from the giveBySelect radio buttons
   // it can also be false, in which case it will try to get the value from the paymentType field
