@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Monday, October 5, 2026 @ 14:40:49 ET
+ *  Date: Tuesday, October 6, 2026 @ 13:41:46 ET
  *  By: nick
  *  ENGrid styles: v0.28.3
  *  ENGrid scripts: v0.28.5
@@ -9235,7 +9235,7 @@ body[data-engrid-debug]:before{
   --recurring-frequency__button_padding:8.5px 0;
   --donation-amount__button_font-size:24px;
   --donation-amount__button_font-weight:700;
-  --donation-amount__button_line-height:54px;
+  --donation-amount__button_line-height:50px;
   --donation-amount__button_padding:0 0;
   --label_font-size:16px;
   --input_padding:8px 10px;
@@ -9304,8 +9304,13 @@ body[data-engrid-debug]:before{
   --input_font-weight:700;
   text-transform:uppercase;
 }
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field__input.en__field__input--other::placeholder{
+  color:#000;
+  opacity:.5;
+  text-transform:uppercase;
+}
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .upsell-message p,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .upsell-message p.recurring-frequency-y-hide{
-  font-size:15px;
+  font-size:17px;
   letter-spacing:4%;
   line-height:20px;
   margin-bottom:20px !important;
@@ -9317,9 +9322,9 @@ body[data-engrid-debug]:before{
   background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='46' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M44.272.68c-.124-.317-.539-.488-.896-.412a1 1 0 0 0-.094.026 1 1 0 0 0-.248-.016 3 3 0 0 0-.405.06l-.286.057-.007.001a31 31 0 0 1-.535.107q-.285.054-.566.114L41.1.644l-.106.02c-.243.048-.486.095-.721.155q-.466.125-.939.245c-.203.054-.402.12-.602.187l-.263.087c-.25.082-.5.183-.74.288l-.15.064-.003.002q-.31.133-.616.271l-.098.042-.003.001c-.162.069-.328.139-.47.23a.77.77 0 0 0-.364.554c-.041.367.203.718.634.779.293.041.613-.085.775-.303q.145-.068.291-.13.11-.045.218-.095.165-.074.332-.145l.016-.007.144-.062c.184-.076.368-.152.556-.216l.204-.066.161-.053.366-.12.402-.104.01-.002.01-.003.402-.104c.163-.044.33-.078.495-.113h.002l.249-.052.653-.133L43.1 2.946l.04.304c.063.459.092.92.12 1.38l.009.137c.037.61.078 1.22.137 1.83.053.527.114 1.061.218 1.585.075.362.545.576.928.494a.78.78 0 0 0 .468-.299.64.64 0 0 0 .095-.519l-.01-.048-.009-.048c.008.031.011.062.019.089a24 24 0 0 1-.276-2.589 55 55 0 0 0-.075-1.056v-.002a21 21 0 0 0-.117-1.273q-.02-.144-.037-.29a9 9 0 0 0-.08-.56l-.093-.479V1.6l-.093-.477a1.2 1.2 0 0 0-.072-.442Z' fill='%23163f58' stroke='%23163f58' stroke-width='.5'/%3E%3Cpath d='M1 19.668c6.733 0 14.026.22 20.716-2.103 5.867-2.037 11.203-4.292 15.625-8.412 2.005-1.867 3.797-5.038 5.135-7.32' stroke='%23163f58' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
   content:"";
   height:20.61px;
-  left:192px;
+  left:205px;
   position:absolute;
-  top:5.09px;
+  top:6px;
   transform:rotate(3.47deg);
   width:44.38px;
 }
@@ -9721,42 +9726,6 @@ body[data-engrid-debug]:before{
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .hide-on-mobile{
   display:none;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .inline-upsell-box{
-  font-size:14px;
-  max-height:100%;
-  min-height:65px;
-  padding:5px;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .inline-upsell-box p{
-  line-height:1.3;
-  margin:0;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .inline-upsell-box em,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .inline-upsell-box strong{
-  font-size:14px;
-  font-weight:400;
-  line-height:1.3;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .inline-upsell-box.recurring-frequency-y-show{
-  line-height:17px;
-  padding:4px 8px;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .inline-upsell-box.recurring-frequency-y-show em,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .inline-upsell-box.recurring-frequency-y-show strong{
-  font-size:13px;
-  line-height:1;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile form.en__component>.en__component{
-  padding:35px 40px;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .new-signup-lightbox form.en__component>.en__component{
-  padding:0;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .radio-to-buttons_recurrfreq .en__field--recurrfreq{
-  margin:13px auto;
-  top:0;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .new-signup-lightbox form.en__component>.en__component>.en__component{
-  height:calc(100% - 4rem) !important;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] iframe[title^=recaptcha]{
   left:-1px;

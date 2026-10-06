@@ -499,6 +499,22 @@ export default class DonationLightboxForm {
       digitalWallets.prepend(backLink);
     }
   }
+  // Update section-count based on visible sections
+  updateSectionCount() {
+    console.log("DonationLightboxForm: updateSectionCount");
+    const visibleSections = Array.from(this.sections).filter((section) =>
+      this.isVisible(section)
+    );
+    visibleSections.forEach((section, key) => {
+      const sectionCount = section.querySelector(".section-count");
+      const sectionCurrent = section.querySelector(".section-count__current");
+      const sectionTotal = section.querySelector(".section-count__total");
+      if (sectionCount && sectionCurrent && sectionTotal) {
+        sectionCurrent.innerHTML = key + 1;
+        sectionTotal.innerHTML = visibleSections.length;
+      }
+    });
+  }
   // Scroll to a section
   scrollToSection(sectionId, fromSectionId) {
     console.log("DonationLightboxForm: scrollToSection", sectionId);
@@ -1176,6 +1192,12 @@ export default class DonationLightboxForm {
 
       let shouldShow = false;
 
+      // Never hide the section that contains the payment method selector
+      // itself, or the user can't switch back to a different payment type
+      const hasPaymentSelector = section.querySelector(
+        ".en__field--giveBySelect, input[name='transaction.giveBySelect']"
+      );
+
       sectionItems.forEach((item) => {
         // An element can carry multiple giveBySelect-* classes (e.g.
         // "giveBySelect-ACH giveBySelect-Card"); check each of them
@@ -1212,12 +1234,13 @@ export default class DonationLightboxForm {
         }
       });
 
-      section.style.display = shouldShow ? "block" : "none";
+      section.style.display = shouldShow || hasPaymentSelector ? "block" : "none";
       console.log(
         `${
-          shouldShow ? "Showing" : "Hiding"
+          shouldShow || hasPaymentSelector ? "Showing" : "Hiding"
         } section ${sectionId} (payment type: ${ptValue})`
       );
     });
+    this.updateSectionCount();
   }
 }

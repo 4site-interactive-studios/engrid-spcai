@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Monday, October 5, 2026 @ 14:40:49 ET
+ *  Date: Tuesday, October 6, 2026 @ 13:41:46 ET
  *  By: nick
  *  ENGrid styles: v0.28.3
  *  ENGrid scripts: v0.28.5
@@ -29142,6 +29142,20 @@ class donation_lightbox_form_v2_DonationLightboxForm {
       digitalWallets.prepend(backLink);
     }
   }
+  // Update section-count based on visible sections
+  updateSectionCount() {
+    console.log("DonationLightboxForm: updateSectionCount");
+    const visibleSections = Array.from(this.sections).filter(section => this.isVisible(section));
+    visibleSections.forEach((section, key) => {
+      const sectionCount = section.querySelector(".section-count");
+      const sectionCurrent = section.querySelector(".section-count__current");
+      const sectionTotal = section.querySelector(".section-count__total");
+      if (sectionCount && sectionCurrent && sectionTotal) {
+        sectionCurrent.innerHTML = key + 1;
+        sectionTotal.innerHTML = visibleSections.length;
+      }
+    });
+  }
   // Scroll to a section
   scrollToSection(sectionId, fromSectionId) {
     console.log("DonationLightboxForm: scrollToSection", sectionId);
@@ -29679,6 +29693,10 @@ class donation_lightbox_form_v2_DonationLightboxForm {
       const sectionItems = Array.from(section.querySelectorAll("[class*='giveBySelect-']")).filter(item => !item.closest(".digital-wallets-wrapper"));
       console.log(`Section ${sectionId} has ${sectionItems.length} giveBySelect- elements (excluding digital-wallets-wrapper)`);
       let shouldShow = false;
+
+      // Never hide the section that contains the payment method selector
+      // itself, or the user can't switch back to a different payment type
+      const hasPaymentSelector = section.querySelector(".en__field--giveBySelect, input[name='transaction.giveBySelect']");
       sectionItems.forEach(item => {
         // An element can carry multiple giveBySelect-* classes (e.g.
         // "giveBySelect-ACH giveBySelect-Card"); check each of them
@@ -29712,9 +29730,10 @@ class donation_lightbox_form_v2_DonationLightboxForm {
           });
         }
       });
-      section.style.display = shouldShow ? "block" : "none";
-      console.log(`${shouldShow ? "Showing" : "Hiding"} section ${sectionId} (payment type: ${ptValue})`);
+      section.style.display = shouldShow || hasPaymentSelector ? "block" : "none";
+      console.log(`${shouldShow || hasPaymentSelector ? "Showing" : "Hiding"} section ${sectionId} (payment type: ${ptValue})`);
     });
+    this.updateSectionCount();
   }
 }
 ;// ./src/scripts/main.js

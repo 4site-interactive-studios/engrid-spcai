@@ -18,7 +18,7 @@
   --recurring-frequency__button_padding: 8.5px 0;
   --donation-amount__button_font-size: 24px;
   --donation-amount__button_font-weight: 700;
-  --donation-amount__button_line-height: 54px;
+  --donation-amount__button_line-height: 50px;
   --donation-amount__button_padding: 0 0;
   --label_font-size: 16px;
   --input_padding: 8px 10px;
@@ -184,11 +184,16 @@
       --input_font-weight: 700;
       text-transform: uppercase;
     }
+    .en__field__input.en__field__input--other::placeholder {
+      text-transform: uppercase;
+      color: black;
+      opacity: 0.5;
+    }
 
     .upsell-message {
       p,
       p.recurring-frequency-y-hide {
-        font-size: 15px;
+        font-size: 17px;
         line-height: 20px;
         letter-spacing: 4%;
         text-align: left;
@@ -201,9 +206,9 @@
           background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2246%22%20height%3D%2221%22%20viewBox%3D%220%200%2046%2021%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M44.272.68c-.124-.317-.539-.488-.896-.412a1%201%200%200%200-.094.026%201%201%200%200%200-.248-.016%203%203%200%200%200-.405.06l-.286.057-.007.001a31%2031%200%200%201-.535.107q-.285.054-.566.114L41.1.644l-.106.02c-.243.048-.486.095-.721.155q-.466.125-.939.245c-.203.054-.402.12-.602.187l-.263.087c-.25.082-.5.183-.74.288l-.15.064-.003.002q-.31.133-.616.271l-.098.042-.003.001c-.162.069-.328.139-.47.23a.77.77%200%200%200-.364.554c-.041.367.203.718.634.779.293.041.613-.085.775-.303q.145-.068.291-.13.11-.045.218-.095.165-.074.332-.145l.016-.007.144-.062c.184-.076.368-.152.556-.216l.204-.066.161-.053.366-.12.402-.104.01-.002.01-.003.402-.104c.163-.044.33-.078.495-.113h.002l.249-.052.653-.133L43.1%202.946l.04.304c.063.459.092.92.12%201.38l.009.137c.037.61.078%201.22.137%201.83.053.527.114%201.061.218%201.585.075.362.545.576.928.494a.78.78%200%200%200%20.468-.299.64.64%200%200%200%20.095-.519l-.01-.048-.009-.048c.008.031.011.062.019.089a24%2024%200%200%201-.276-2.589%2055%2055%200%200%200-.075-1.056v-.002a21%2021%200%200%200-.117-1.273q-.02-.144-.037-.29a9%209%200%200%200-.08-.56l-.093-.479V1.6l-.093-.477a1.2%201.2%200%200%200-.072-.442Z%22%20fill%3D%22%23163f58%22%20stroke%3D%22%23163f58%22%20stroke-width%3D%22.5%22%2F%3E%3Cpath%20d%3D%22M1%2019.668c6.733%200%2014.026.22%2020.716-2.103%205.867-2.037%2011.203-4.292%2015.625-8.412%202.005-1.867%203.797-5.038%205.135-7.32%22%20stroke%3D%22%23163f58%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E");
           content: "";
           height: 20.61px;
-          left: 192px;
+          left: 205px;
           position: absolute;
-          top: 5.09px;
+          top: 6px;
           transform: rotate(3.47deg);
           width: 44.38px;
         }
@@ -1022,48 +1027,6 @@
         }
         .hide-on-mobile {
           display: none;
-        }
-        .inline-upsell-box {
-          max-height: 100%;
-          min-height: 65px;
-          font-size: 14px;
-          padding: 5px;
-          p {
-            margin: 0;
-            line-height: 1.3;
-          }
-          strong,
-          em {
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 1.3;
-          }
-          &.recurring-frequency-y-show {
-            padding: 4px 8px;
-            line-height: 17px;
-            strong,
-            em {
-              font-size: 13px;
-              line-height: 1;
-            }
-          }
-        }
-        form.en__component > .en__component {
-          padding: 35px 40px;
-        }
-        .new-signup-lightbox form.en__component > .en__component {
-          padding: 0;
-        }
-        .radio-to-buttons_recurrfreq .en__field--recurrfreq {
-          top: 0;
-          margin: 13px auto;
-        }
-
-        .new-signup-lightbox
-          form.en__component
-          > .en__component
-          > .en__component {
-          height: calc(100% - 4rem) !important;
         }
       }
     }
