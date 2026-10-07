@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Tuesday, October 6, 2026 @ 15:27:45 ET
+ *  Date: Wednesday, October 7, 2026 @ 00:20:07 ET
  *  By: nick
  *  ENGrid styles: v0.28.3
  *  ENGrid scripts: v0.28.5
@@ -9325,9 +9325,15 @@ body[data-engrid-debug]:before{
   text-transform:uppercase;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field__input.en__field__input--other::placeholder{
-  color:#000;
+  color:#5c5d5f;
   opacity:.5;
   text-transform:uppercase;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field__input--select{
+  background-origin:initial;
+  background-position:right 5px center;
+  padding-right:24px;
+  text-overflow:ellipsis;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .upsell-message p,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .upsell-message p.recurring-frequency-y-hide{
   font-size:17px;

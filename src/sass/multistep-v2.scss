@@ -218,8 +218,14 @@
     }
     .en__field__input.en__field__input--other::placeholder {
       text-transform: uppercase;
-      color: black;
+      color: #5c5d5f;
       opacity: 0.5;
+    }
+    .en__field__input--select {
+      padding-right: 24px;
+      background-origin: padding-box;
+      background-position: right 5px center;
+      text-overflow: ellipsis;
     }
 
     .upsell-message {
