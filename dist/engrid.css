@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Wednesday, October 7, 2026 @ 00:20:07 ET
+ *  Date: Monday, October 19, 2026 @ 16:51:00 ET
  *  By: nick
  *  ENGrid styles: v0.28.3
  *  ENGrid scripts: v0.28.5
@@ -9707,30 +9707,61 @@ body[data-engrid-debug]:before{
   margin:0;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .back-link{
+  align-items:center;
+  border:2px solid var(--color_primary);
+  border-radius:var(--button_border-radius);
+  bottom:-24px;
+  color:var(--color_primary);
+  cursor:pointer;
   display:none;
-  font-size:15px;
-  font-style:italic;
-  font-weight:400;
-  line-height:24px;
+  height:75px;
+  justify-content:center;
+  left:5px;
+  padding:0 12px;
+  position:absolute;
+  text-decoration:none;
+  transition:color .3s ease-in-out,border-color .3s ease-in-out;
+  width:70px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .back-link svg path{
+  transition:fill .3s ease-in-out;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .back-link:hover{
+  border-color:#1c4f6e;
+  color:#1c4f6e;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .back-link:hover svg path{
+  fill:#1c4f6e;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=daf] [data-last-section=true] .section-navigation,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=paypaltouch] [data-last-section=true] .section-navigation,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=stripedigitalwallet] [data-last-section=true] .section-navigation{
   display:none !important;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=daf] .back-link,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=paypaltouch] .back-link,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=stripedigitalwallet] .back-link{
-  display:block;
-  text-decoration:none;
+  display:flex;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-conditonally-hide-show-digital-wallet-elements] #en__digitalWallet .en__digitalWallet__container{
   margin-top:0 !important;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .digital-wallets-wrapper{
   align-items:center;
+  bottom:15px;
   display:flex;
   flex-direction:column-reverse;
   justify-content:center;
-}
-[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .digital-wallets-wrapper div{
+  position:absolute;
   width:100%;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .digital-wallets-wrapper .back-link{
+  background-color:#fff;
+  height:45px;
+  position:absolute;
+  top:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .digital-wallets-wrapper #en__digitalWallet{
+  position:absolute;
+  right:0;
+  top:0;
+  width:calc(100% - 75px);
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] #en__field_transaction_paycurrency{
   font-size:14px;
