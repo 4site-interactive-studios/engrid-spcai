@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Monday, October 19, 2026 @ 16:51:00 ET
+ *  Date: Monday, October 19, 2026 @ 16:59:29 ET
  *  By: nick
  *  ENGrid styles: v0.28.3
  *  ENGrid scripts: v0.28.5
@@ -28577,7 +28577,7 @@ class DonationLightboxForm {
   }
   changeSubmitButton() {
     const submit = document.querySelector(".section-navigation__submit");
-    const amount = this.checkNested(window.EngagingNetworks, "require", "_defined", "enjs", "getDonationTotal") ? "$" + window.EngagingNetworks.require._defined.enjs.getDonationTotal() : null;
+    const amount = this.checkNested(window.EngagingNetworks, "require", "_defined", "enjs", "getDonationTotal") ? "$" + Number(window.EngagingNetworks.require._defined.enjs.getDonationTotal()).toFixed(2) : null;
     let frequency = this.frequency.getInstance().frequency;
     let label = submit ? submit.dataset.label : "";
     frequency = frequency === "onetime" ? "" : "<small>/mo</small>";
@@ -29518,7 +29518,7 @@ class donation_lightbox_form_v2_DonationLightboxForm {
   }
   changeSubmitButton() {
     const submit = document.querySelector(".section-navigation__submit");
-    const amount = this.checkNested(window.EngagingNetworks, "require", "_defined", "enjs", "getDonationTotal") ? "$" + window.EngagingNetworks.require._defined.enjs.getDonationTotal() : null;
+    const amount = this.checkNested(window.EngagingNetworks, "require", "_defined", "enjs", "getDonationTotal") ? "$" + Number(window.EngagingNetworks.require._defined.enjs.getDonationTotal()).toFixed(2) : null;
     let frequency = this.frequency.getInstance().frequency;
     let label = submit ? submit.dataset.label : "";
     frequency = frequency === "onetime" ? "" : " /<small>mo</small>";
