@@ -19,10 +19,10 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Sunday, September 13, 2026 @ 00:50:23 ET
- *  By: fernando
- *  ENGrid styles: v0.28.3
- *  ENGrid scripts: v0.28.5
+ *  Date: Tuesday, October 20, 2026 @ 13:03:50 ET
+ *  By: michael
+ *  ENGrid styles: v0.22.11
+ *  ENGrid scripts: v0.22.13
  *
  *  Created by 4Site Studios
  *  Come work with us or join our team, we would love to hear from you
@@ -75,7 +75,8 @@ a{
 }
 abbr[title]{
   text-decoration:underline;
-  text-decoration:underline dotted;
+  -webkit-text-decoration:underline dotted;
+          text-decoration:underline dotted;
 }
 b,strong{
   font-weight:bolder;
@@ -488,6 +489,7 @@ template{
 .en__eventOccurrencesDateSelector__clear,.en__occurrenceSummary__change{
   color:#0070ba;
   cursor:pointer;
+  -webkit-text-decoration:underline;
   text-decoration:underline;
 }
 
@@ -992,7 +994,7 @@ template{
 }
 
 .en__ecardmessage__default{
-  border:1px solid var(--textarea_border-color, #bfbfbf);
+  border:1px solid #bfbfbf;
   min-height:15.625rem;
   padding:.625rem;
 }
@@ -1021,7 +1023,7 @@ template{
 
 .en__ecardrecipients__list{
   background:var(--color_white);
-  border:1px solid var(--textarea_border-color, #bfbfbf);
+  border:1px solid #bfbfbf;
   margin:1.25rem 0 0;
   min-height:15.625rem;
   padding:.625rem;
@@ -1859,11 +1861,13 @@ p{
 a{
   color:var(--a_color);
   font-family:var(--a_font-family);
-  text-decoration:var(--a_text-decoration);
+  -webkit-text-decoration:var(--a_text-decoration);
+          text-decoration:var(--a_text-decoration);
 }
 a:focus,a:hover{
   color:var(--a_color_hover);
-  text-decoration:var(--a_text-decoration_hover);
+  -webkit-text-decoration:var(--a_text-decoration_hover);
+          text-decoration:var(--a_text-decoration_hover);
 }
 
 [data-engrid-theme]{
@@ -2040,6 +2044,7 @@ label a.label-tooltip{
   margin-left:var(--fields_spacing-inline);
   margin-right:var(--fields_spacing-inline);
   right:0;
+  -webkit-text-decoration:underline;
   text-decoration:underline;
   text-transform:none;
 }
@@ -2064,7 +2069,8 @@ label a.label-tooltip:last-child{
   line-height:var(--label_line-height);
   margin-left:0;
   margin-right:0;
-  text-decoration:var(--a_text-decoration);
+  -webkit-text-decoration:var(--a_text-decoration);
+          text-decoration:var(--a_text-decoration);
   text-transform:var(--label_text-transform);
 }
 input,input.en__field__input{
@@ -2564,19 +2570,6 @@ input[disabled],input[readonly],select[disabled],textarea[disabled],textarea[rea
 body[data-engrid-live-currency=active] .en__field--donationAmt .en__field__item:not([data-engrid-currency-symbol-updated=true]) label{
   color:#0000 !important;
 }
-.engrid__sr-only{
-  clip:rect(0 0 0 0);
-  border:0;
-  clip-path:inset(50%);
-  height:1px;
-  margin:-1px;
-  overflow:hidden;
-  padding:0;
-  position:absolute;
-  white-space:nowrap;
-  width:1px;
-}
-
 @supports (-webkit-appearance:-apple-pay-button){
   .apple-pay-button{
     -apple-pay-button-type:donate;
@@ -2586,32 +2579,20 @@ body[data-engrid-live-currency=active] .en__field--donationAmt .en__field__item:
   .apple-pay-button,.apple-pay-button-white-with-line{
     -apple-pay-button-style:white-outline;
   }
+  .en__field__input.en__field__input--radio[value=applepay]+label{
+    border-width:0 !important;
+  }
+  .en__field__input.en__field__input--radio[value=applepay]:checked+label{
+    background-color:initial !important;
+  }
+  .en__field__input.en__field__input--radio[value=applepay]:checked+label .apple-pay-button{
+    -apple-pay-button-style:inherit !important;
+  }
 }
 @supports not (-webkit-appearance:-apple-pay-button){
   .apple-pay-button,.apple-pay-container,.en__field__input.en__field__input--radio[value=applepay]+label{
     display:none;
   }
-}
-@supports (-webkit-appearance:-apple-pay-button){
-  .apple-pay-container{
-    margin-top:2rem;
-    width:100%;
-  }
-  .apple-pay-container .apple-pay-button{
-    cursor:pointer;
-    display:block;
-    height:45px;
-    width:100%;
-  }
-  body:not(#en__pagebuilder):not([data-engrid-apple-pay-available=true]) .apple-pay-container,body:not(#en__pagebuilder):not([data-engrid-payment-type=applepay]) .apple-pay-container{
-    display:none;
-  }
-  body:not(#en__pagebuilder)[data-engrid-apple-pay-available=false] .en__field__input.en__field__input--radio[value=applepay]+label,body:not(#en__pagebuilder)[data-engrid-apple-pay-available=true][data-engrid-payment-type=applepay] .en__submit{
-    display:none;
-  }
-}
-body:not(#en__pagebuilder):not([data-engrid-payment-type=applepay]) .showif-applepay-selected,body:not(#en__pagebuilder)[data-engrid-payment-type=applepay] .hideif-applepay-selected{
-  display:none;
 }
 input:-webkit-autofill,select:-webkit-autofill,textarea:-webkit-autofill{
   animation-name:onAutoFillStart;
@@ -2768,6 +2749,7 @@ body{
   color:var(--button_color_checked);
 }
 a.button,a.button.active,a.button:active,a.button:focus,a.button:hover{
+  -webkit-text-decoration:none;
   text-decoration:none;
 }
 
@@ -2874,16 +2856,8 @@ a.button,a.button.active,a.button:active,a.button:focus,a.button:hover{
   --click-to-expand__cta-image_height:16px;
 }
 
-body#en__pagebuilder .click-to-expand-screenreader-tip{
-  background-color:rgba(248,168,9,.102) !important;
-}
-
 body:not(#en__pagebuilder) .click-to-expand .click-to-expand-text-wrapper>:first-child{
   margin-top:0;
-}
-
-body:not(#en__pagebuilder) .click-to-expand .click-to-expand-screenreader-tip{
-  display:none;
 }
 
 body:not(#en__pagebuilder) .click-to-expand:not(.expanded){
@@ -2897,29 +2871,21 @@ body:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-text
 }
 body:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-cta{
   background:var(--click-to-expand__cta-image_url);
-  background-color:initial;
   background-position:bottom;
   background-repeat:no-repeat;
   background-size:var(--click-to-expand__cta-image_width) var(--click-to-expand__cta-image_height);
-  border:none;
   bottom:0;
-  cursor:pointer;
   height:var(--click-to-expand__cta-image_height);
   left:0;
   margin-left:auto;
   margin-right:auto;
-  padding:0;
   position:absolute;
   right:0;
   width:var(--click-to-expand__cta-image_width);
 }
-body:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-cta:focus-visible{
-  outline:2px solid currentColor;
-  outline-offset:2px;
-}
 
-body:not(#en__pagebuilder) .click-to-expand.expanded .click-to-expand-cta{
-  display:none;
+body:not(#en__pagebuilder) .click-to-expand.expanded .click-to-expand-text-wrapper{
+  outline:none;
 }
 
 [data-engrid-theme]{
@@ -3175,7 +3141,7 @@ body:not(#en__pagebuilder) .click-to-expand.expanded .click-to-expand-cta{
   align-items:flex-start;
   flex-direction:column;
 }
-#en__pagebuilder .hide,#en__pagebuilder .hide-labels .en__field>label,#en__pagebuilder .hide-until-client-js-loading-finished,#en__pagebuilder .hide-until-engrid-js-loading-finished,#en__pagebuilder .i1-hide .en__field:first-of-type,#en__pagebuilder .i1-hide-label .en__field:first-of-type>label,#en__pagebuilder .i10-hide .en__field:nth-of-type(10),#en__pagebuilder .i10-hide-label .en__field:nth-of-type(10)>label,#en__pagebuilder .i11-hide .en__field:nth-of-type(11),#en__pagebuilder .i11-hide-label .en__field:nth-of-type(11)>label,#en__pagebuilder .i2-hide .en__field:nth-of-type(2),#en__pagebuilder .i2-hide-label .en__field:nth-of-type(2)>label,#en__pagebuilder .i3-hide .en__field:nth-of-type(3),#en__pagebuilder .i3-hide-label .en__field:nth-of-type(3)>label,#en__pagebuilder .i4-hide .en__field:nth-of-type(4),#en__pagebuilder .i4-hide-label .en__field:nth-of-type(4)>label,#en__pagebuilder .i5-hide .en__field:nth-of-type(5),#en__pagebuilder .i5-hide-label .en__field:nth-of-type(5)>label,#en__pagebuilder .i6-hide .en__field:nth-of-type(6),#en__pagebuilder .i6-hide-label .en__field:nth-of-type(6)>label,#en__pagebuilder .i7-hide .en__field:nth-of-type(7),#en__pagebuilder .i7-hide-label .en__field:nth-of-type(7)>label,#en__pagebuilder .i8-hide .en__field:nth-of-type(8),#en__pagebuilder .i8-hide-label .en__field:nth-of-type(8)>label,#en__pagebuilder .i9-hide .en__field:nth-of-type(9),#en__pagebuilder .i9-hide-label .en__field:nth-of-type(9)>label,#en__pagebuilder [hidden-via-url-argument],#en__pagebuilder label.hide-label,[data-engrid-debug] .hide,[data-engrid-debug] .hide-labels .en__field>label,[data-engrid-debug] .hide-until-client-js-loading-finished,[data-engrid-debug] .hide-until-engrid-js-loading-finished,[data-engrid-debug] .i1-hide .en__field:first-of-type,[data-engrid-debug] .i1-hide-label .en__field:first-of-type>label,[data-engrid-debug] .i10-hide .en__field:nth-of-type(10),[data-engrid-debug] .i10-hide-label .en__field:nth-of-type(10)>label,[data-engrid-debug] .i11-hide .en__field:nth-of-type(11),[data-engrid-debug] .i11-hide-label .en__field:nth-of-type(11)>label,[data-engrid-debug] .i2-hide .en__field:nth-of-type(2),[data-engrid-debug] .i2-hide-label .en__field:nth-of-type(2)>label,[data-engrid-debug] .i3-hide .en__field:nth-of-type(3),[data-engrid-debug] .i3-hide-label .en__field:nth-of-type(3)>label,[data-engrid-debug] .i4-hide .en__field:nth-of-type(4),[data-engrid-debug] .i4-hide-label .en__field:nth-of-type(4)>label,[data-engrid-debug] .i5-hide .en__field:nth-of-type(5),[data-engrid-debug] .i5-hide-label .en__field:nth-of-type(5)>label,[data-engrid-debug] .i6-hide .en__field:nth-of-type(6),[data-engrid-debug] .i6-hide-label .en__field:nth-of-type(6)>label,[data-engrid-debug] .i7-hide .en__field:nth-of-type(7),[data-engrid-debug] .i7-hide-label .en__field:nth-of-type(7)>label,[data-engrid-debug] .i8-hide .en__field:nth-of-type(8),[data-engrid-debug] .i8-hide-label .en__field:nth-of-type(8)>label,[data-engrid-debug] .i9-hide .en__field:nth-of-type(9),[data-engrid-debug] .i9-hide-label .en__field:nth-of-type(9)>label,[data-engrid-debug] [hidden-via-url-argument],[data-engrid-debug] label.hide-label{
+#en__pagebuilder .en__field--plaid,#en__pagebuilder .hide,#en__pagebuilder .hide-labels .en__field>label,#en__pagebuilder .hide-until-client-js-loading-finished,#en__pagebuilder .hide-until-engrid-js-loading-finished,#en__pagebuilder .i1-hide .en__field:first-of-type,#en__pagebuilder .i1-hide-label .en__field:first-of-type>label,#en__pagebuilder .i10-hide .en__field:nth-of-type(10),#en__pagebuilder .i10-hide-label .en__field:nth-of-type(10)>label,#en__pagebuilder .i11-hide .en__field:nth-of-type(11),#en__pagebuilder .i11-hide-label .en__field:nth-of-type(11)>label,#en__pagebuilder .i2-hide .en__field:nth-of-type(2),#en__pagebuilder .i2-hide-label .en__field:nth-of-type(2)>label,#en__pagebuilder .i3-hide .en__field:nth-of-type(3),#en__pagebuilder .i3-hide-label .en__field:nth-of-type(3)>label,#en__pagebuilder .i4-hide .en__field:nth-of-type(4),#en__pagebuilder .i4-hide-label .en__field:nth-of-type(4)>label,#en__pagebuilder .i5-hide .en__field:nth-of-type(5),#en__pagebuilder .i5-hide-label .en__field:nth-of-type(5)>label,#en__pagebuilder .i6-hide .en__field:nth-of-type(6),#en__pagebuilder .i6-hide-label .en__field:nth-of-type(6)>label,#en__pagebuilder .i7-hide .en__field:nth-of-type(7),#en__pagebuilder .i7-hide-label .en__field:nth-of-type(7)>label,#en__pagebuilder .i8-hide .en__field:nth-of-type(8),#en__pagebuilder .i8-hide-label .en__field:nth-of-type(8)>label,#en__pagebuilder .i9-hide .en__field:nth-of-type(9),#en__pagebuilder .i9-hide-label .en__field:nth-of-type(9)>label,#en__pagebuilder [hidden-via-url-argument],#en__pagebuilder label.hide-label,[data-engrid-debug] .en__field--plaid,[data-engrid-debug] .hide,[data-engrid-debug] .hide-labels .en__field>label,[data-engrid-debug] .hide-until-client-js-loading-finished,[data-engrid-debug] .hide-until-engrid-js-loading-finished,[data-engrid-debug] .i1-hide .en__field:first-of-type,[data-engrid-debug] .i1-hide-label .en__field:first-of-type>label,[data-engrid-debug] .i10-hide .en__field:nth-of-type(10),[data-engrid-debug] .i10-hide-label .en__field:nth-of-type(10)>label,[data-engrid-debug] .i11-hide .en__field:nth-of-type(11),[data-engrid-debug] .i11-hide-label .en__field:nth-of-type(11)>label,[data-engrid-debug] .i2-hide .en__field:nth-of-type(2),[data-engrid-debug] .i2-hide-label .en__field:nth-of-type(2)>label,[data-engrid-debug] .i3-hide .en__field:nth-of-type(3),[data-engrid-debug] .i3-hide-label .en__field:nth-of-type(3)>label,[data-engrid-debug] .i4-hide .en__field:nth-of-type(4),[data-engrid-debug] .i4-hide-label .en__field:nth-of-type(4)>label,[data-engrid-debug] .i5-hide .en__field:nth-of-type(5),[data-engrid-debug] .i5-hide-label .en__field:nth-of-type(5)>label,[data-engrid-debug] .i6-hide .en__field:nth-of-type(6),[data-engrid-debug] .i6-hide-label .en__field:nth-of-type(6)>label,[data-engrid-debug] .i7-hide .en__field:nth-of-type(7),[data-engrid-debug] .i7-hide-label .en__field:nth-of-type(7)>label,[data-engrid-debug] .i8-hide .en__field:nth-of-type(8),[data-engrid-debug] .i8-hide-label .en__field:nth-of-type(8)>label,[data-engrid-debug] .i9-hide .en__field:nth-of-type(9),[data-engrid-debug] .i9-hide-label .en__field:nth-of-type(9)>label,[data-engrid-debug] [hidden-via-url-argument],[data-engrid-debug] label.hide-label{
   background-color:rgba(255,0,0,.102) !important;
 }
 body:not(#en__pagebuilder):not([data-engrid-debug]) .hide:not(.en__field--validationFailed):not(:has(.en__field.en__field--validationFailed)),body:not(#en__pagebuilder):not([data-engrid-debug]) div:not(.en__field--validationFailed) .hide:not(.en__field--validationFailed):not(:has(.en__field.en__field--validationFailed)){
@@ -3184,7 +3150,7 @@ body:not(#en__pagebuilder):not([data-engrid-debug]) .hide:not(.en__field--valida
 body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-js-loading=finished]) .en__field--donationAmt .en__field__item label{
   color:#0000 !important;
 }
-body:not(#en__pagebuilder):not([data-engrid-debug]) .i1-hide .en__field:not(.en__field--validationFailed):first-of-type,body:not(#en__pagebuilder):not([data-engrid-debug]) .i10-hide .en__field:not(.en__field--validationFailed):nth-of-type(10),body:not(#en__pagebuilder):not([data-engrid-debug]) .i11-hide .en__field:not(.en__field--validationFailed):nth-of-type(11),body:not(#en__pagebuilder):not([data-engrid-debug]) .i2-hide .en__field:not(.en__field--validationFailed):nth-of-type(2),body:not(#en__pagebuilder):not([data-engrid-debug]) .i3-hide .en__field:not(.en__field--validationFailed):nth-of-type(3),body:not(#en__pagebuilder):not([data-engrid-debug]) .i4-hide .en__field:not(.en__field--validationFailed):nth-of-type(4),body:not(#en__pagebuilder):not([data-engrid-debug]) .i5-hide .en__field:not(.en__field--validationFailed):nth-of-type(5),body:not(#en__pagebuilder):not([data-engrid-debug]) .i6-hide .en__field:not(.en__field--validationFailed):nth-of-type(6),body:not(#en__pagebuilder):not([data-engrid-debug]) .i7-hide .en__field:not(.en__field--validationFailed):nth-of-type(7),body:not(#en__pagebuilder):not([data-engrid-debug]) .i8-hide .en__field:not(.en__field--validationFailed):nth-of-type(8),body:not(#en__pagebuilder):not([data-engrid-debug]) .i9-hide .en__field:not(.en__field--validationFailed):nth-of-type(9),body:not(#en__pagebuilder):not([data-engrid-debug]) [hidden-via-url-argument],body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-client-js-loading=finished]) .hide-until-client-js-loading-finished,body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-js-loading=finished]) .hide-until-engrid-js-loading-finished{
+body:not(#en__pagebuilder):not([data-engrid-debug]) .en__field--plaid,body:not(#en__pagebuilder):not([data-engrid-debug]) .i1-hide .en__field:not(.en__field--validationFailed):first-of-type,body:not(#en__pagebuilder):not([data-engrid-debug]) .i10-hide .en__field:not(.en__field--validationFailed):nth-of-type(10),body:not(#en__pagebuilder):not([data-engrid-debug]) .i11-hide .en__field:not(.en__field--validationFailed):nth-of-type(11),body:not(#en__pagebuilder):not([data-engrid-debug]) .i2-hide .en__field:not(.en__field--validationFailed):nth-of-type(2),body:not(#en__pagebuilder):not([data-engrid-debug]) .i3-hide .en__field:not(.en__field--validationFailed):nth-of-type(3),body:not(#en__pagebuilder):not([data-engrid-debug]) .i4-hide .en__field:not(.en__field--validationFailed):nth-of-type(4),body:not(#en__pagebuilder):not([data-engrid-debug]) .i5-hide .en__field:not(.en__field--validationFailed):nth-of-type(5),body:not(#en__pagebuilder):not([data-engrid-debug]) .i6-hide .en__field:not(.en__field--validationFailed):nth-of-type(6),body:not(#en__pagebuilder):not([data-engrid-debug]) .i7-hide .en__field:not(.en__field--validationFailed):nth-of-type(7),body:not(#en__pagebuilder):not([data-engrid-debug]) .i8-hide .en__field:not(.en__field--validationFailed):nth-of-type(8),body:not(#en__pagebuilder):not([data-engrid-debug]) .i9-hide .en__field:not(.en__field--validationFailed):nth-of-type(9),body:not(#en__pagebuilder):not([data-engrid-debug]) [hidden-via-url-argument],body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-client-js-loading=finished]) .hide-until-client-js-loading-finished,body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-js-loading=finished]) .hide-until-engrid-js-loading-finished{
   display:none;
 }
 @supports not selector(:has(*)){
@@ -3271,11 +3237,14 @@ body:not(#en__pagebuilder):not([data-engrid-debug]) .hide-labels .en__field:not(
   padding-right:var(--fields_spacing-inline);
   padding-top:0;
 }
-[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-apple-pay=true]) .showif-apple-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-daf=true]) .showif-daf-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-google-pay=true]) .showif-google-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-paypal-one-touch=true]) .showif-paypal-one-touch-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-stripedigitalwallet=true]) .showif-stripedigitalwallet-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-venmo=true]) .showif-venmo-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=daf]) .showif-daf-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=paypaltouch]) .showif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=stripedigitalwallet]) .showif-stripedigitalwallet-selected{
+[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-apple-pay=true]) .showif-apple-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-daf=true]) .showif-daf-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-google-pay=true]) .showif-google-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-paypal-one-touch=true]) .showif-paypal-one-touch-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-venmo=true]) .showif-venmo-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=daf]) .showif-daf-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=paypaltouch]) .showif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=stripedigitalwallet]) .showif-stripedigitalwallet-selected{
   display:none;
 }
 [data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=daf] .hideif-daf-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=daf] .hideif-daf-selected_hide-vanilla-submit-button .en__submit,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=paypaltouch] .hideif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=stripedigitalwallet] .hideif-stripedigitalwallet-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-transaction-recurring=n][data-engrid-payment-type-option-paypal-one-touch=true] .en__field--giveBySelect.paypal,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-transaction-recurring=y] .en__field--giveBySelect.paypaltouch{
   display:none;
+}
+[data-engrid-theme] iframe.plaid-link-iframe,[data-engrid-theme] iframe[id^=plaid-link-iframe]{
+  background-color:#909090fa;
 }
 
 [data-engrid-theme]{
@@ -3934,11 +3903,6 @@ button.en__ecarditems__addrecipient{
   width:calc((100% - var(--fields_spacing-inline)*var(--ecard_thumnail-row_count)*2)/var(--ecard_thumnail-row_count));
 }
 
-.en__ecarditems__thumb:focus,.en__ecarditems__thumb:focus-visible{
-  outline:3px solid var(--focus_outline_color, #086ce7);
-  outline-offset:var(--focus_outline_offset, 2px);
-}
-
 .en__ecarditems__thumb img{
   border:var(--ecard_thumnail-border-width) solid var(--color_primary);
   filter:brightness(75%);
@@ -3982,17 +3946,6 @@ button.en__ecarditems__prevclose{
 }
 .en__ecarditems__showprev :hover{
   color:#fff;
-}
-.en__ecardrecipients__futureDelivery input[type=date]{
-  appearance:none;
-  box-sizing:border-box;
-  max-width:100%;
-  min-width:0;
-  width:100%;
-}
-
-.en__ecardrecipients__futureDelivery input[type=date]::-webkit-date-and-time-value{
-  text-align:left;
 }
 
 @media screen and (max-width:700px){
@@ -4342,68 +4295,6 @@ button.en__eventOccurrence__select>label{
   justify-self:end;
 }
 
-.en__overlay--waitlist .en__overlay__popup{
-  top:15vh;
-  width:100%;
-}
-.en__overlay--waitlist .en__overlay__header{
-  background:var(--engrid__page_background-color);
-  border-bottom:unset;
-  border-radius:unset;
-}
-.en__overlay--waitlist .en__overlay__content{
-  background:var(--engrid__page_background-color);
-  padding:10px 20px;
-}
-.en__overlay--waitlist .en__overlay__content .en__button--confirm{
-  --button_background-color:var(--submit__button_background-color);
-  --button_border-color:var(--submit__button_border-color);
-  --button_color:var(--submit__button_color);
-  --button_background-color_hover:var(--submit__button_background-color_hover);
-  --button_border-color_hover:var(--submit__button_border-color_hover);
-  --button_color_hover:var(--submit__button_color_hover);
-  margin:auto;
-  min-width:100px;
-  padding:var(--button_padding);
-}
-.en__overlay--waitlist .en__waitlistCopy{
-  font-size:var(--h2_font-size);
-  font-weight:var(--h2_font-weight);
-  line-height:var(--h2_line-height);
-  margin-left:auto;
-  margin-right:auto;
-  max-width:400px;
-}
-.en__overlay--waitlist .en__waitlistForm{
-  margin-left:auto;
-  margin-right:auto;
-  max-width:475px;
-}
-.en__overlay--waitlist .en__field{
-  display:grid;
-  gap:8px;
-}
-.en__overlay--waitlist .en__overlay__actions{
-  display:flex;
-  flex-direction:row-reverse;
-  justify-content:space-between;
-  margin:16px auto;
-  max-width:450px;
-}
-.en__overlay--waitlist .en__overlay__actions .en__button{
-  min-width:120px;
-  padding:var(--button_padding);
-  text-transform:uppercase;
-}
-.en__overlay--waitlist .en__overlay__actions .en__button--submit{
-  --button_background-color:var(--submit__button_background-color);
-  --button_border-color:var(--submit__button_border-color);
-  --button_color:var(--submit__button_color);
-  --button_background-color_hover:var(--submit__button_background-color_hover);
-  --button_border-color_hover:var(--submit__button_border-color_hover);
-  --button_color_hover:var(--submit__button_color_hover);
-}
-
 @media screen and (max-width:600px){
   .en__ticket{
     display:flex;
@@ -4448,9 +4339,6 @@ button.en__eventOccurrence__select>label{
   .en__ticket__plus{
     margin-right:2rem;
   }
-}
-#engrid:has(.en__overlay--open) .content-footer,#engrid:has(.en__overlay--open) .content-footerSpacer,#engrid:has(.en__overlay--open) .content-header,#engrid:has(.en__overlay--open) .content-preFooter{
-  z-index:unset;
 }
 [data-engrid-errors=fancy] .en__field__error{
   background-color:var(--error__color);
@@ -4597,6 +4485,7 @@ figure.media-with-attribution figattribution,figure.media-with-attribution figat
   font-weight:var(--media-attribution__font-weight);
 }
 figure.media-with-attribution figattribution a,figure.media-with-attribution figattribution a:focus,figure.media-with-attribution figattribution a:hover{
+  -webkit-text-decoration:none;
   text-decoration:none;
 }
 figure.media-with-attribution figattribution{
@@ -4793,7 +4682,7 @@ body:not(#en__pagebuilder) img:not([src]):not([srcset]){
 #goMonthly h1{
   margin-top:0;
 }
-#goMonthly h1 .upsell_suggestion,#goMonthly h1 .upsell_suggestion_frequency{
+#goMonthly h1 .upsell_suggestion{
   font-weight:700;
 }
 #goMonthly .upsellOtherAmountLabel p{
@@ -4892,6 +4781,7 @@ body:not(#en__pagebuilder) img:not([src]):not([srcset]){
   display:flex;
   justify-content:center;
   position:relative;
+  -webkit-text-decoration:none;
   text-decoration:none;
   width:100%;
 }
@@ -5082,140 +4972,6 @@ div[id^=nb-field-].nb-success input{
   display:none !important;
 }
 
-body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation .background-rotation-layer{
-  background-position:100% 0;
-  background-repeat:no-repeat;
-  background-size:cover;
-  height:100vh;
-  left:0;
-  object-position:top right;
-  opacity:0;
-  pointer-events:none;
-  position:fixed;
-  top:0;
-  transition:opacity var(--background-rotation-transition-duration, .5s) ease-in-out;
-  width:100vw;
-  z-index:0;
-}
-body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation .background-rotation-layer.active{
-  opacity:1;
-}
-body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation .background-rotation-layer.active:not(.background-rotation-outgoing){
-  z-index:1;
-}
-body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation.background-rotation-transition .background-rotation-layer{
-  will-change:opacity;
-}
-body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation img.background-rotation-layer{
-  display:block;
-  object-fit:cover;
-}
-body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation figure.background-rotation-layer.active{
-  pointer-events:auto;
-}
-body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation figure.media-with-attribution:not(.background-rotation-layer){
-  background-image:none;
-  display:block;
-  position:static;
-}
-body:not(#en__pagebuilder)[data-engrid-background-rotation] .page-backgroundImage:before{
-  background-image:var(--background-rotation-image, none);
-}
-body:not(#en__pagebuilder)[data-engrid-layout=centercenter1col] .page-backgroundImage .page-background-rotation .background-rotation-layer,body:not(#en__pagebuilder)[data-engrid-layout=centercenter2col] .page-backgroundImage .page-background-rotation .background-rotation-layer{
-  background-position:top;
-  object-position:top center;
-}
-body:not(#en__pagebuilder)[data-engrid-layout=centerright1col] .page-backgroundImage .page-background-rotation .background-rotation-layer,body:not(#en__pagebuilder)[data-engrid-layout=rightright1col] .page-backgroundImage .page-background-rotation .background-rotation-layer{
-  background-position:0 0;
-  object-position:top left;
-}
-
-@media screen and (max-width:499px){
-  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation{
-    overflow:hidden;
-    position:relative;
-  }
-  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation .background-rotation-layer,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation .background-rotation-layer{
-    display:none !important;
-  }
-  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation .background-rotation-layer.active,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation .background-rotation-layer.active{
-    background-image:none !important;
-    display:block !important;
-    height:auto;
-    left:0;
-    opacity:1;
-    position:absolute;
-    top:0;
-    width:100%;
-  }
-  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation .background-rotation-layer.background-rotation-flow,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation .background-rotation-layer.background-rotation-flow{
-    position:static;
-  }
-  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation .background-rotation-layer.background-rotation-outgoing,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation .background-rotation-layer.background-rotation-outgoing{
-    z-index:0;
-  }
-  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation figure.background-rotation-layer.active,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation figure.background-rotation-layer.active{
-    height:auto !important;
-    transform:none !important;
-    width:100% !important;
-  }
-  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation figure.background-rotation-layer.background-rotation-flow,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation figure.background-rotation-layer.background-rotation-flow{
-    position:relative !important;
-  }
-  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation img.background-rotation-layer.active,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation img.background-rotation-layer.active{
-    object-fit:fill;
-  }
-}
-.background-rotation-controls{
-  display:none;
-}
-
-body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls{
-  display:flex;
-  gap:.5rem;
-  position:fixed;
-  right:1rem;
-  top:1rem;
-  z-index:8;
-}
-body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button{
-  align-items:center;
-  background-color:#000000bf;
-  border:none;
-  border-radius:50%;
-  color:#fff;
-  cursor:pointer;
-  display:flex;
-  height:40px;
-  justify-content:center;
-  padding:0;
-  transition:background-color .15s ease-in-out;
-  width:40px;
-}
-body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:focus-visible,body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:hover{
-  background-color:#000000bf;
-}
-body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:focus-visible{
-  outline:2px solid #fff;
-  outline-offset:2px;
-}
-body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:disabled{
-  cursor:default;
-  opacity:.4;
-}
-body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:disabled:focus-visible,body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:disabled:hover{
-  background-color:#00000080;
-}
-body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button svg{
-  height:20px;
-  width:20px;
-}
-
-@media (prefers-reduced-motion:reduce){
-  body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation .background-rotation-layer{
-    transition:none;
-  }
-}
 [data-engrid-theme]{
   --premium__border-width:0;
   --premium__border-color:none;
@@ -5271,11 +5027,6 @@ body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-r
   padding:0;
   width:var(--radio_width);
 }
-[data-engrid-theme] .en__pg__select:has(input:focus){
-  border-radius:30px;
-  outline:3px solid var(--focus_outline_color, #086ce7);
-  outline-offset:var(--focus_outline_offset, 2px);
-}
 [data-engrid-theme] .en__pg__display{
   grid-area:en__pg__display;
   padding:0;
@@ -5330,6 +5081,7 @@ a.skip-link{
   z-index:2147483647 !important;
 }
 a.skip-link:active,a.skip-link:focus,a.skip-link:hover{
+  -webkit-text-decoration:underline !important;
   text-decoration:underline !important;
 }
 a.skip-link:not(:focus):not(:active){
@@ -5592,10 +5344,6 @@ body:not(#en__pagebuilder):not([data-engrid-debug]) [class*=showifamount].animat
 }
 [data-engrid-theme][data-engrid-page-type=supporterhub] .en__hubPledge__validationFail .en__field__element{
   border:none;
-}
-[data-engrid-theme][data-engrid-page-type=supporterhub] .en__component--hubgadget:focus{
-  outline:3px solid var(--focus_outline_color, #086ce7);
-  outline-offset:var(--focus_outline_offset, 2px);
 }
 @media screen and (max-width:768px){
   [data-engrid-theme] .en__hubPledge__buttons{
@@ -5919,6 +5667,7 @@ body[data-engrid-exit-intent-lightbox=open]{
   padding-bottom:var(--exit-intent__button_padding-bottom);
   padding-top:var(--exit-intent__button_padding-top);
   text-align:center;
+  -webkit-text-decoration:none;
   text-decoration:none;
   text-transform:var(--exit-intent__button_text-transform);
   transition:all .3s ease-in-out;
@@ -5961,6 +5710,7 @@ body[data-engrid-exit-intent-lightbox=open]{
   color:#016da3;
   cursor:pointer;
   font-weight:700;
+  -webkit-text-decoration:underline;
   text-decoration:underline;
 }
 .engrid-reset-welcome-back svg,.engrid-welcome-back-clear svg{
@@ -6010,17 +5760,6 @@ body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-embedded-ec
 
 body:not(#en__pagebuilder) .checkbox-label{
   display:none;
-}
-
-.engrid-custom-checkbox-label{
-  box-sizing:border-box;
-  width:100%;
-}
-.engrid-custom-checkbox-label p:first-child{
-  margin-top:0;
-}
-.engrid-custom-checkbox-label p:last-child{
-  margin-bottom:0;
 }
 [data-engrid-theme]{
   --engrid__page_padding:0px;
@@ -6433,7 +6172,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=centercenter1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=centercenter1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=centercenter1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
+  [data-engrid-layout=centercenter1col][data-engrid-embedded] [class*=page-backgroundImage]{
     display:none !important;
   }
 }
@@ -6613,7 +6352,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=centerleft1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=centerleft1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=centerleft1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
+  [data-engrid-layout=centerleft1col][data-engrid-embedded] [class*=page-backgroundImage]{
     display:none !important;
   }
 }
@@ -6691,7 +6430,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=centerright1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=centerright1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=centerright1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
+  [data-engrid-layout=centerright1col][data-engrid-embedded] [class*=page-backgroundImage]{
     display:none !important;
   }
 }
@@ -6744,7 +6483,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=leftleft1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=leftleft1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=leftleft1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
+  [data-engrid-layout=leftleft1col][data-engrid-embedded] [class*=page-backgroundImage]{
     display:none !important;
   }
 }
@@ -6822,7 +6561,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=rightright1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=rightright1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=rightright1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
+  [data-engrid-layout=rightright1col][data-engrid-embedded] [class*=page-backgroundImage]{
     display:none !important;
   }
 }
@@ -7620,6 +7359,7 @@ body[data-engrid-debug]:before{
   color:#000;
   cursor:pointer;
   text-align:center;
+  -webkit-text-decoration:none;
   text-decoration:none;
 }
 .debug-panel__link-label .debug-panel__edit-link,.debug-panel__link-label .debug-panel__edit-link:hover{
@@ -7741,14 +7481,14 @@ body[data-engrid-debug]:before{
   outline-style:solid;
   z-index:1000;
 }
-#en__pagebuilder [class*=engrid__supporter i],#en__pagebuilder [class*=giveBySelect-ach i],#en__pagebuilder [class*=giveBySelect-card i],#en__pagebuilder [class*=giveBySelect-check i],#en__pagebuilder [class*=giveBySelect-digitalwallet i],#en__pagebuilder [class*=giveBySelect-paypal i],#en__pagebuilder [class*=giveBySelect-paypaltouch i],#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i],#en__pagebuilder [class*=inmem-n i],#en__pagebuilder [class*=inmem-y i],#en__pagebuilder [class*=shipenabled-n i],#en__pagebuilder [class*=shipenabled-y i]{
+#en__pagebuilder [class*=engrid__supporter i],#en__pagebuilder [class*=giveBySelect-ach i],#en__pagebuilder [class*=giveBySelect-card i],#en__pagebuilder [class*=giveBySelect-check i],#en__pagebuilder [class*=giveBySelect-digitalwallet i],#en__pagebuilder [class*=giveBySelect-paypal i],#en__pagebuilder [class*=giveBySelect-paypaltouch i],#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i],#en__pagebuilder [class*=inmem-n i],#en__pagebuilder [class*=inmem-y i]{
   background-color:rgba(0,0,255,.102) !important;
 }
-#en__pagebuilder [class*=engrid__supporter i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-ach i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-card i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-check i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-digitalwallet i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-paypal i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-paypaltouch i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=inmem-n i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=inmem-y i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=shipenabled-n i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=shipenabled-y i].pboAdvancedRow__preview .en__component--column{
+#en__pagebuilder [class*=engrid__supporter i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-ach i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-card i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-check i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-digitalwallet i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-paypal i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-paypaltouch i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=inmem-n i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=inmem-y i].pboAdvancedRow__preview .en__component--column{
   outline-color:#00f !important;
   z-index:1;
 }
-#en__pagebuilder [class*=engrid__supporter i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-ach i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-card i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-check i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-digitalwallet i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-paypal i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-paypaltouch i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i] .en__mandatory,#en__pagebuilder [class*=inmem-n i] .en__mandatory,#en__pagebuilder [class*=inmem-y i] .en__mandatory,#en__pagebuilder [class*=shipenabled-n i] .en__mandatory,#en__pagebuilder [class*=shipenabled-y i] .en__mandatory{
+#en__pagebuilder [class*=engrid__supporter i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-ach i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-card i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-check i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-digitalwallet i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-paypal i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-paypaltouch i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i] .en__mandatory,#en__pagebuilder [class*=inmem-n i] .en__mandatory,#en__pagebuilder [class*=inmem-y i] .en__mandatory{
   outline:5px solid #f12222;
 }
 #en__pagebuilder .live-giving-amount,#en__pagebuilder .live-giving-frequency,#en__pagebuilder .live-giving-upsell-amount,#en__pagebuilder .live-giving-upsell-amount-raw{
@@ -7987,6 +7727,7 @@ body[data-engrid-debug]:before{
   padding-right:0;
   padding-top:var(--fields_spacing-block);
   text-align:left;
+  -webkit-text-decoration:none;
   text-decoration:none;
   white-space:nowrap;
 }
@@ -8278,6 +8019,7 @@ body[data-engrid-debug]:before{
   font-size:16px;
   position:relative;
   text-align:center;
+  -webkit-text-decoration:none;
   text-decoration:none;
 }
 [data-engrid-theme=spcai][data-engrid-layout=leftleft1col] .content-footer .footer-links a:not(:last-child){
@@ -8770,6 +8512,7 @@ body[data-engrid-debug]:before{
   border:#0000;
 }
 [data-engrid-theme=spcai] #en__upsellModal__no button span{
+  -webkit-text-decoration:underline;
   text-decoration:underline;
 }
 
@@ -9127,6 +8870,7 @@ body[data-engrid-debug]:before{
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-payment-type=daf] .back-link,[data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-payment-type=paypaltouch] .back-link,[data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-payment-type=stripedigitalwallet] .back-link{
   display:block;
+  -webkit-text-decoration:none;
   text-decoration:none;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-conditonally-hide-show-digital-wallet-elements] #en__digitalWallet .en__digitalWallet__container{
@@ -9217,6 +8961,31 @@ body[data-engrid-debug]:before{
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep] .en__component--row--1:first-of-type .en__component--copyblock:first-of-type h2{
   margin-bottom:0;
   margin-top:0;
+}
+
+[data-engrid-theme=spcai] .multiply-your-impact{
+  background-color:#fdeeec;
+  border:1px solid #f3d7d5;
+  border-left:6px solid var(--color_red);
+  border-radius:6px;
+  box-sizing:border-box;
+  flex-basis:100%;
+  margin:var(--fields_spacing-block, 10px) 0;
+  padding:20px 24px;
+  width:100%;
+}
+[data-engrid-theme=spcai] .multiply-your-impact__headline{
+  color:var(--color_navy);
+  font-size:24px;
+  font-weight:700;
+  line-height:1.3;
+  margin:0 0 4px;
+}
+[data-engrid-theme=spcai] .multiply-your-impact__subheader{
+  color:var(--color_dark-gray);
+  font-size:16px;
+  line-height:1.4;
+  margin:0;
 }
 body{
   opacity:1;
