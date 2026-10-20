@@ -3,7 +3,7 @@
     box-sizing: border-box;
     width: 100%;
     flex-basis: 100%;
-    margin: var(--fields_spacing-block, 10px) 0;
+    margin: var(--fields_spacing-block, 10px) var(--fields_spacing-inline);
     padding: 20px 24px;
     background-color: #fdeeec;
     border: 1px solid #f3d7d5;
