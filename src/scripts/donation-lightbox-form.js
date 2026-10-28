@@ -905,7 +905,10 @@ export default class DonationLightboxForm {
       "enjs",
       "getDonationTotal"
     )
-      ? "$" + window.EngagingNetworks.require._defined.enjs.getDonationTotal()
+      ? "$" +
+        Number(
+          window.EngagingNetworks.require._defined.enjs.getDonationTotal()
+        ).toFixed(2)
       : null;
     let frequency = this.frequency.getInstance().frequency;
     let label = submit ? submit.dataset.label : "";
