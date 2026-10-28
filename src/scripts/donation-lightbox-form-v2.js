@@ -65,17 +65,16 @@ export default class DonationLightboxForm {
         let engrid = document.querySelector("#engrid");
         if (engrid) {
           let engridContent = engrid.innerHTML;
-          engridContent = engridContent.replace(
-            "{user_data~First Name}",
-            urlParams.get("name")
+          engridContent = engridContent.replace("{user_data~First Name}", () =>
+            this.escapeHtml(urlParams.get("name"))
           );
           engridContent = engridContent.replace(
             "{receipt_data~recurringFrequency}",
-            urlParams.get("frequency")
+            () => this.escapeHtml(urlParams.get("frequency"))
           );
           engridContent = engridContent.replace(
             "{receipt_data~amount}",
-            "$" + urlParams.get("amount")
+            () => "$" + this.escapeHtml(urlParams.get("amount"))
           );
           engrid.innerHTML = engridContent;
           this.sendMessage("firstname", urlParams.get("name"));
@@ -384,8 +383,9 @@ export default class DonationLightboxForm {
         }
       } else {
         // Single Section Pages
-        const submitButtonLabel =
-          document.querySelector(".en__submit button")?.innerText || "Submit";
+        const submitButtonLabel = this.escapeHtml(
+          document.querySelector(".en__submit button")?.innerText || "Submit"
+        );
         sectionNavigation.innerHTML = `
         <button class="section-navigation__submit" data-section-id="${key}" type="submit" data-label="${submitButtonLabel}">
           <span>${submitButtonLabel}</span>
@@ -930,6 +930,19 @@ export default class DonationLightboxForm {
     }
     return true;
   }
+  escapeHtml(value) {
+    const characters = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    };
+    return String(value).replace(
+      /[&<>"']/g,
+      (character) => characters[character]
+    );
+  }
 
   // Bounce Arrow Up and Down
   bounceArrow(freq) {
@@ -959,7 +972,7 @@ export default class DonationLightboxForm {
         ).toFixed(2)
       : null;
     let frequency = this.frequency.getInstance().frequency;
-    let label = submit ? submit.dataset.label : "";
+    let label = submit ? this.escapeHtml(submit.dataset.label) : "";
     frequency = frequency === "onetime" ? "" : " /<small>mo</small>";
 
     if (amount) {
@@ -1142,7 +1155,9 @@ export default class DonationLightboxForm {
       "jc",
     ].includes(paymentType.value.toLowerCase());
     const checkedNonCard = Array.from(
-      document.querySelectorAll("input[name='transaction.giveBySelect']:checked")
+      document.querySelectorAll(
+        "input[name='transaction.giveBySelect']:checked"
+      )
     ).some((radio) => radio.value.toLowerCase() !== "card");
     if (isCard && !checkedNonCard) return;
     this.setCardPaymentType();
@@ -1289,7 +1304,8 @@ export default class DonationLightboxForm {
         }
       });
 
-      section.style.display = shouldShow || hasPaymentSelector ? "block" : "none";
+      section.style.display =
+        shouldShow || hasPaymentSelector ? "block" : "none";
       console.log(
         `${
           shouldShow || hasPaymentSelector ? "Showing" : "Hiding"
