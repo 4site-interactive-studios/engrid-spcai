@@ -19,6 +19,7 @@ import "./sass/main.scss";
 import DonationLightboxForm from "./scripts/donation-lightbox-form";
 import DonationLightboxFormV2 from "./scripts/donation-lightbox-form-v2";
 import { customScript } from "./scripts/main";
+import { MultiplyYourImpact } from "./scripts/multiply-your-impact";
 import { sendSupporterDataToTatango } from "./scripts/tatango";
 
 const options: Options = {
@@ -42,6 +43,7 @@ const options: Options = {
     (<any>window).DonationLightboxForm = DonationLightboxForm;
     new DonationLightboxForm(DonationAmount, DonationFrequency, App);
     new DonationLightboxFormV2(DonationAmount, DonationFrequency, App);
+    new MultiplyYourImpact();
     new OptInLadder();
     customScript(App, EnForm);
   },
