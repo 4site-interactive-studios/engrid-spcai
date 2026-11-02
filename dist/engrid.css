@@ -19,10 +19,10 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Tuesday, October 20, 2026 @ 13:19:39 ET
+ *  Date: Monday, November 2, 2026 @ 08:04:27 ET
  *  By: michael
- *  ENGrid styles: v0.22.11
- *  ENGrid scripts: v0.22.13
+ *  ENGrid styles: v0.28.3
+ *  ENGrid scripts: v0.28.5
  *
  *  Created by 4Site Studios
  *  Come work with us or join our team, we would love to hear from you
@@ -75,8 +75,7 @@ a{
 }
 abbr[title]{
   text-decoration:underline;
-  -webkit-text-decoration:underline dotted;
-          text-decoration:underline dotted;
+  text-decoration:underline dotted;
 }
 b,strong{
   font-weight:bolder;
@@ -489,7 +488,6 @@ template{
 .en__eventOccurrencesDateSelector__clear,.en__occurrenceSummary__change{
   color:#0070ba;
   cursor:pointer;
-  -webkit-text-decoration:underline;
   text-decoration:underline;
 }
 
@@ -994,7 +992,7 @@ template{
 }
 
 .en__ecardmessage__default{
-  border:1px solid #bfbfbf;
+  border:1px solid var(--textarea_border-color, #bfbfbf);
   min-height:15.625rem;
   padding:.625rem;
 }
@@ -1023,7 +1021,7 @@ template{
 
 .en__ecardrecipients__list{
   background:var(--color_white);
-  border:1px solid #bfbfbf;
+  border:1px solid var(--textarea_border-color, #bfbfbf);
   margin:1.25rem 0 0;
   min-height:15.625rem;
   padding:.625rem;
@@ -1861,13 +1859,11 @@ p{
 a{
   color:var(--a_color);
   font-family:var(--a_font-family);
-  -webkit-text-decoration:var(--a_text-decoration);
-          text-decoration:var(--a_text-decoration);
+  text-decoration:var(--a_text-decoration);
 }
 a:focus,a:hover{
   color:var(--a_color_hover);
-  -webkit-text-decoration:var(--a_text-decoration_hover);
-          text-decoration:var(--a_text-decoration_hover);
+  text-decoration:var(--a_text-decoration_hover);
 }
 
 [data-engrid-theme]{
@@ -2044,7 +2040,6 @@ label a.label-tooltip{
   margin-left:var(--fields_spacing-inline);
   margin-right:var(--fields_spacing-inline);
   right:0;
-  -webkit-text-decoration:underline;
   text-decoration:underline;
   text-transform:none;
 }
@@ -2069,8 +2064,7 @@ label a.label-tooltip:last-child{
   line-height:var(--label_line-height);
   margin-left:0;
   margin-right:0;
-  -webkit-text-decoration:var(--a_text-decoration);
-          text-decoration:var(--a_text-decoration);
+  text-decoration:var(--a_text-decoration);
   text-transform:var(--label_text-transform);
 }
 input,input.en__field__input{
@@ -2570,6 +2564,19 @@ input[disabled],input[readonly],select[disabled],textarea[disabled],textarea[rea
 body[data-engrid-live-currency=active] .en__field--donationAmt .en__field__item:not([data-engrid-currency-symbol-updated=true]) label{
   color:#0000 !important;
 }
+.engrid__sr-only{
+  clip:rect(0 0 0 0);
+  border:0;
+  clip-path:inset(50%);
+  height:1px;
+  margin:-1px;
+  overflow:hidden;
+  padding:0;
+  position:absolute;
+  white-space:nowrap;
+  width:1px;
+}
+
 @supports (-webkit-appearance:-apple-pay-button){
   .apple-pay-button{
     -apple-pay-button-type:donate;
@@ -2579,20 +2586,32 @@ body[data-engrid-live-currency=active] .en__field--donationAmt .en__field__item:
   .apple-pay-button,.apple-pay-button-white-with-line{
     -apple-pay-button-style:white-outline;
   }
-  .en__field__input.en__field__input--radio[value=applepay]+label{
-    border-width:0 !important;
-  }
-  .en__field__input.en__field__input--radio[value=applepay]:checked+label{
-    background-color:initial !important;
-  }
-  .en__field__input.en__field__input--radio[value=applepay]:checked+label .apple-pay-button{
-    -apple-pay-button-style:inherit !important;
-  }
 }
 @supports not (-webkit-appearance:-apple-pay-button){
   .apple-pay-button,.apple-pay-container,.en__field__input.en__field__input--radio[value=applepay]+label{
     display:none;
   }
+}
+@supports (-webkit-appearance:-apple-pay-button){
+  .apple-pay-container{
+    margin-top:2rem;
+    width:100%;
+  }
+  .apple-pay-container .apple-pay-button{
+    cursor:pointer;
+    display:block;
+    height:45px;
+    width:100%;
+  }
+  body:not(#en__pagebuilder):not([data-engrid-apple-pay-available=true]) .apple-pay-container,body:not(#en__pagebuilder):not([data-engrid-payment-type=applepay]) .apple-pay-container{
+    display:none;
+  }
+  body:not(#en__pagebuilder)[data-engrid-apple-pay-available=false] .en__field__input.en__field__input--radio[value=applepay]+label,body:not(#en__pagebuilder)[data-engrid-apple-pay-available=true][data-engrid-payment-type=applepay] .en__submit{
+    display:none;
+  }
+}
+body:not(#en__pagebuilder):not([data-engrid-payment-type=applepay]) .showif-applepay-selected,body:not(#en__pagebuilder)[data-engrid-payment-type=applepay] .hideif-applepay-selected{
+  display:none;
 }
 input:-webkit-autofill,select:-webkit-autofill,textarea:-webkit-autofill{
   animation-name:onAutoFillStart;
@@ -2749,7 +2768,6 @@ body{
   color:var(--button_color_checked);
 }
 a.button,a.button.active,a.button:active,a.button:focus,a.button:hover{
-  -webkit-text-decoration:none;
   text-decoration:none;
 }
 
@@ -2856,8 +2874,16 @@ a.button,a.button.active,a.button:active,a.button:focus,a.button:hover{
   --click-to-expand__cta-image_height:16px;
 }
 
+body#en__pagebuilder .click-to-expand-screenreader-tip{
+  background-color:rgba(248,168,9,.102) !important;
+}
+
 body:not(#en__pagebuilder) .click-to-expand .click-to-expand-text-wrapper>:first-child{
   margin-top:0;
+}
+
+body:not(#en__pagebuilder) .click-to-expand .click-to-expand-screenreader-tip{
+  display:none;
 }
 
 body:not(#en__pagebuilder) .click-to-expand:not(.expanded){
@@ -2871,21 +2897,29 @@ body:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-text
 }
 body:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-cta{
   background:var(--click-to-expand__cta-image_url);
+  background-color:initial;
   background-position:bottom;
   background-repeat:no-repeat;
   background-size:var(--click-to-expand__cta-image_width) var(--click-to-expand__cta-image_height);
+  border:none;
   bottom:0;
+  cursor:pointer;
   height:var(--click-to-expand__cta-image_height);
   left:0;
   margin-left:auto;
   margin-right:auto;
+  padding:0;
   position:absolute;
   right:0;
   width:var(--click-to-expand__cta-image_width);
 }
+body:not(#en__pagebuilder) .click-to-expand:not(.expanded) .click-to-expand-cta:focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:2px;
+}
 
-body:not(#en__pagebuilder) .click-to-expand.expanded .click-to-expand-text-wrapper{
-  outline:none;
+body:not(#en__pagebuilder) .click-to-expand.expanded .click-to-expand-cta{
+  display:none;
 }
 
 [data-engrid-theme]{
@@ -3141,7 +3175,7 @@ body:not(#en__pagebuilder) .click-to-expand.expanded .click-to-expand-text-wrapp
   align-items:flex-start;
   flex-direction:column;
 }
-#en__pagebuilder .en__field--plaid,#en__pagebuilder .hide,#en__pagebuilder .hide-labels .en__field>label,#en__pagebuilder .hide-until-client-js-loading-finished,#en__pagebuilder .hide-until-engrid-js-loading-finished,#en__pagebuilder .i1-hide .en__field:first-of-type,#en__pagebuilder .i1-hide-label .en__field:first-of-type>label,#en__pagebuilder .i10-hide .en__field:nth-of-type(10),#en__pagebuilder .i10-hide-label .en__field:nth-of-type(10)>label,#en__pagebuilder .i11-hide .en__field:nth-of-type(11),#en__pagebuilder .i11-hide-label .en__field:nth-of-type(11)>label,#en__pagebuilder .i2-hide .en__field:nth-of-type(2),#en__pagebuilder .i2-hide-label .en__field:nth-of-type(2)>label,#en__pagebuilder .i3-hide .en__field:nth-of-type(3),#en__pagebuilder .i3-hide-label .en__field:nth-of-type(3)>label,#en__pagebuilder .i4-hide .en__field:nth-of-type(4),#en__pagebuilder .i4-hide-label .en__field:nth-of-type(4)>label,#en__pagebuilder .i5-hide .en__field:nth-of-type(5),#en__pagebuilder .i5-hide-label .en__field:nth-of-type(5)>label,#en__pagebuilder .i6-hide .en__field:nth-of-type(6),#en__pagebuilder .i6-hide-label .en__field:nth-of-type(6)>label,#en__pagebuilder .i7-hide .en__field:nth-of-type(7),#en__pagebuilder .i7-hide-label .en__field:nth-of-type(7)>label,#en__pagebuilder .i8-hide .en__field:nth-of-type(8),#en__pagebuilder .i8-hide-label .en__field:nth-of-type(8)>label,#en__pagebuilder .i9-hide .en__field:nth-of-type(9),#en__pagebuilder .i9-hide-label .en__field:nth-of-type(9)>label,#en__pagebuilder [hidden-via-url-argument],#en__pagebuilder label.hide-label,[data-engrid-debug] .en__field--plaid,[data-engrid-debug] .hide,[data-engrid-debug] .hide-labels .en__field>label,[data-engrid-debug] .hide-until-client-js-loading-finished,[data-engrid-debug] .hide-until-engrid-js-loading-finished,[data-engrid-debug] .i1-hide .en__field:first-of-type,[data-engrid-debug] .i1-hide-label .en__field:first-of-type>label,[data-engrid-debug] .i10-hide .en__field:nth-of-type(10),[data-engrid-debug] .i10-hide-label .en__field:nth-of-type(10)>label,[data-engrid-debug] .i11-hide .en__field:nth-of-type(11),[data-engrid-debug] .i11-hide-label .en__field:nth-of-type(11)>label,[data-engrid-debug] .i2-hide .en__field:nth-of-type(2),[data-engrid-debug] .i2-hide-label .en__field:nth-of-type(2)>label,[data-engrid-debug] .i3-hide .en__field:nth-of-type(3),[data-engrid-debug] .i3-hide-label .en__field:nth-of-type(3)>label,[data-engrid-debug] .i4-hide .en__field:nth-of-type(4),[data-engrid-debug] .i4-hide-label .en__field:nth-of-type(4)>label,[data-engrid-debug] .i5-hide .en__field:nth-of-type(5),[data-engrid-debug] .i5-hide-label .en__field:nth-of-type(5)>label,[data-engrid-debug] .i6-hide .en__field:nth-of-type(6),[data-engrid-debug] .i6-hide-label .en__field:nth-of-type(6)>label,[data-engrid-debug] .i7-hide .en__field:nth-of-type(7),[data-engrid-debug] .i7-hide-label .en__field:nth-of-type(7)>label,[data-engrid-debug] .i8-hide .en__field:nth-of-type(8),[data-engrid-debug] .i8-hide-label .en__field:nth-of-type(8)>label,[data-engrid-debug] .i9-hide .en__field:nth-of-type(9),[data-engrid-debug] .i9-hide-label .en__field:nth-of-type(9)>label,[data-engrid-debug] [hidden-via-url-argument],[data-engrid-debug] label.hide-label{
+#en__pagebuilder .hide,#en__pagebuilder .hide-labels .en__field>label,#en__pagebuilder .hide-until-client-js-loading-finished,#en__pagebuilder .hide-until-engrid-js-loading-finished,#en__pagebuilder .i1-hide .en__field:first-of-type,#en__pagebuilder .i1-hide-label .en__field:first-of-type>label,#en__pagebuilder .i10-hide .en__field:nth-of-type(10),#en__pagebuilder .i10-hide-label .en__field:nth-of-type(10)>label,#en__pagebuilder .i11-hide .en__field:nth-of-type(11),#en__pagebuilder .i11-hide-label .en__field:nth-of-type(11)>label,#en__pagebuilder .i2-hide .en__field:nth-of-type(2),#en__pagebuilder .i2-hide-label .en__field:nth-of-type(2)>label,#en__pagebuilder .i3-hide .en__field:nth-of-type(3),#en__pagebuilder .i3-hide-label .en__field:nth-of-type(3)>label,#en__pagebuilder .i4-hide .en__field:nth-of-type(4),#en__pagebuilder .i4-hide-label .en__field:nth-of-type(4)>label,#en__pagebuilder .i5-hide .en__field:nth-of-type(5),#en__pagebuilder .i5-hide-label .en__field:nth-of-type(5)>label,#en__pagebuilder .i6-hide .en__field:nth-of-type(6),#en__pagebuilder .i6-hide-label .en__field:nth-of-type(6)>label,#en__pagebuilder .i7-hide .en__field:nth-of-type(7),#en__pagebuilder .i7-hide-label .en__field:nth-of-type(7)>label,#en__pagebuilder .i8-hide .en__field:nth-of-type(8),#en__pagebuilder .i8-hide-label .en__field:nth-of-type(8)>label,#en__pagebuilder .i9-hide .en__field:nth-of-type(9),#en__pagebuilder .i9-hide-label .en__field:nth-of-type(9)>label,#en__pagebuilder [hidden-via-url-argument],#en__pagebuilder label.hide-label,[data-engrid-debug] .hide,[data-engrid-debug] .hide-labels .en__field>label,[data-engrid-debug] .hide-until-client-js-loading-finished,[data-engrid-debug] .hide-until-engrid-js-loading-finished,[data-engrid-debug] .i1-hide .en__field:first-of-type,[data-engrid-debug] .i1-hide-label .en__field:first-of-type>label,[data-engrid-debug] .i10-hide .en__field:nth-of-type(10),[data-engrid-debug] .i10-hide-label .en__field:nth-of-type(10)>label,[data-engrid-debug] .i11-hide .en__field:nth-of-type(11),[data-engrid-debug] .i11-hide-label .en__field:nth-of-type(11)>label,[data-engrid-debug] .i2-hide .en__field:nth-of-type(2),[data-engrid-debug] .i2-hide-label .en__field:nth-of-type(2)>label,[data-engrid-debug] .i3-hide .en__field:nth-of-type(3),[data-engrid-debug] .i3-hide-label .en__field:nth-of-type(3)>label,[data-engrid-debug] .i4-hide .en__field:nth-of-type(4),[data-engrid-debug] .i4-hide-label .en__field:nth-of-type(4)>label,[data-engrid-debug] .i5-hide .en__field:nth-of-type(5),[data-engrid-debug] .i5-hide-label .en__field:nth-of-type(5)>label,[data-engrid-debug] .i6-hide .en__field:nth-of-type(6),[data-engrid-debug] .i6-hide-label .en__field:nth-of-type(6)>label,[data-engrid-debug] .i7-hide .en__field:nth-of-type(7),[data-engrid-debug] .i7-hide-label .en__field:nth-of-type(7)>label,[data-engrid-debug] .i8-hide .en__field:nth-of-type(8),[data-engrid-debug] .i8-hide-label .en__field:nth-of-type(8)>label,[data-engrid-debug] .i9-hide .en__field:nth-of-type(9),[data-engrid-debug] .i9-hide-label .en__field:nth-of-type(9)>label,[data-engrid-debug] [hidden-via-url-argument],[data-engrid-debug] label.hide-label{
   background-color:rgba(255,0,0,.102) !important;
 }
 body:not(#en__pagebuilder):not([data-engrid-debug]) .hide:not(.en__field--validationFailed):not(:has(.en__field.en__field--validationFailed)),body:not(#en__pagebuilder):not([data-engrid-debug]) div:not(.en__field--validationFailed) .hide:not(.en__field--validationFailed):not(:has(.en__field.en__field--validationFailed)){
@@ -3150,7 +3184,7 @@ body:not(#en__pagebuilder):not([data-engrid-debug]) .hide:not(.en__field--valida
 body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-js-loading=finished]) .en__field--donationAmt .en__field__item label{
   color:#0000 !important;
 }
-body:not(#en__pagebuilder):not([data-engrid-debug]) .en__field--plaid,body:not(#en__pagebuilder):not([data-engrid-debug]) .i1-hide .en__field:not(.en__field--validationFailed):first-of-type,body:not(#en__pagebuilder):not([data-engrid-debug]) .i10-hide .en__field:not(.en__field--validationFailed):nth-of-type(10),body:not(#en__pagebuilder):not([data-engrid-debug]) .i11-hide .en__field:not(.en__field--validationFailed):nth-of-type(11),body:not(#en__pagebuilder):not([data-engrid-debug]) .i2-hide .en__field:not(.en__field--validationFailed):nth-of-type(2),body:not(#en__pagebuilder):not([data-engrid-debug]) .i3-hide .en__field:not(.en__field--validationFailed):nth-of-type(3),body:not(#en__pagebuilder):not([data-engrid-debug]) .i4-hide .en__field:not(.en__field--validationFailed):nth-of-type(4),body:not(#en__pagebuilder):not([data-engrid-debug]) .i5-hide .en__field:not(.en__field--validationFailed):nth-of-type(5),body:not(#en__pagebuilder):not([data-engrid-debug]) .i6-hide .en__field:not(.en__field--validationFailed):nth-of-type(6),body:not(#en__pagebuilder):not([data-engrid-debug]) .i7-hide .en__field:not(.en__field--validationFailed):nth-of-type(7),body:not(#en__pagebuilder):not([data-engrid-debug]) .i8-hide .en__field:not(.en__field--validationFailed):nth-of-type(8),body:not(#en__pagebuilder):not([data-engrid-debug]) .i9-hide .en__field:not(.en__field--validationFailed):nth-of-type(9),body:not(#en__pagebuilder):not([data-engrid-debug]) [hidden-via-url-argument],body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-client-js-loading=finished]) .hide-until-client-js-loading-finished,body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-js-loading=finished]) .hide-until-engrid-js-loading-finished{
+body:not(#en__pagebuilder):not([data-engrid-debug]) .i1-hide .en__field:not(.en__field--validationFailed):first-of-type,body:not(#en__pagebuilder):not([data-engrid-debug]) .i10-hide .en__field:not(.en__field--validationFailed):nth-of-type(10),body:not(#en__pagebuilder):not([data-engrid-debug]) .i11-hide .en__field:not(.en__field--validationFailed):nth-of-type(11),body:not(#en__pagebuilder):not([data-engrid-debug]) .i2-hide .en__field:not(.en__field--validationFailed):nth-of-type(2),body:not(#en__pagebuilder):not([data-engrid-debug]) .i3-hide .en__field:not(.en__field--validationFailed):nth-of-type(3),body:not(#en__pagebuilder):not([data-engrid-debug]) .i4-hide .en__field:not(.en__field--validationFailed):nth-of-type(4),body:not(#en__pagebuilder):not([data-engrid-debug]) .i5-hide .en__field:not(.en__field--validationFailed):nth-of-type(5),body:not(#en__pagebuilder):not([data-engrid-debug]) .i6-hide .en__field:not(.en__field--validationFailed):nth-of-type(6),body:not(#en__pagebuilder):not([data-engrid-debug]) .i7-hide .en__field:not(.en__field--validationFailed):nth-of-type(7),body:not(#en__pagebuilder):not([data-engrid-debug]) .i8-hide .en__field:not(.en__field--validationFailed):nth-of-type(8),body:not(#en__pagebuilder):not([data-engrid-debug]) .i9-hide .en__field:not(.en__field--validationFailed):nth-of-type(9),body:not(#en__pagebuilder):not([data-engrid-debug]) [hidden-via-url-argument],body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-client-js-loading=finished]) .hide-until-client-js-loading-finished,body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-js-loading=finished]) .hide-until-engrid-js-loading-finished{
   display:none;
 }
 @supports not selector(:has(*)){
@@ -3237,14 +3271,11 @@ body:not(#en__pagebuilder):not([data-engrid-debug]) .hide-labels .en__field:not(
   padding-right:var(--fields_spacing-inline);
   padding-top:0;
 }
-[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-apple-pay=true]) .showif-apple-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-daf=true]) .showif-daf-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-google-pay=true]) .showif-google-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-paypal-one-touch=true]) .showif-paypal-one-touch-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-venmo=true]) .showif-venmo-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=daf]) .showif-daf-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=paypaltouch]) .showif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=stripedigitalwallet]) .showif-stripedigitalwallet-selected{
+[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-apple-pay=true]) .showif-apple-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-daf=true]) .showif-daf-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-google-pay=true]) .showif-google-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-paypal-one-touch=true]) .showif-paypal-one-touch-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-stripedigitalwallet=true]) .showif-stripedigitalwallet-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-venmo=true]) .showif-venmo-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=daf]) .showif-daf-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=paypaltouch]) .showif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=stripedigitalwallet]) .showif-stripedigitalwallet-selected{
   display:none;
 }
 [data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=daf] .hideif-daf-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=daf] .hideif-daf-selected_hide-vanilla-submit-button .en__submit,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=paypaltouch] .hideif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=stripedigitalwallet] .hideif-stripedigitalwallet-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-transaction-recurring=n][data-engrid-payment-type-option-paypal-one-touch=true] .en__field--giveBySelect.paypal,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-transaction-recurring=y] .en__field--giveBySelect.paypaltouch{
   display:none;
-}
-[data-engrid-theme] iframe.plaid-link-iframe,[data-engrid-theme] iframe[id^=plaid-link-iframe]{
-  background-color:#909090fa;
 }
 
 [data-engrid-theme]{
@@ -3903,6 +3934,11 @@ button.en__ecarditems__addrecipient{
   width:calc((100% - var(--fields_spacing-inline)*var(--ecard_thumnail-row_count)*2)/var(--ecard_thumnail-row_count));
 }
 
+.en__ecarditems__thumb:focus,.en__ecarditems__thumb:focus-visible{
+  outline:3px solid var(--focus_outline_color, #086ce7);
+  outline-offset:var(--focus_outline_offset, 2px);
+}
+
 .en__ecarditems__thumb img{
   border:var(--ecard_thumnail-border-width) solid var(--color_primary);
   filter:brightness(75%);
@@ -3946,6 +3982,17 @@ button.en__ecarditems__prevclose{
 }
 .en__ecarditems__showprev :hover{
   color:#fff;
+}
+.en__ecardrecipients__futureDelivery input[type=date]{
+  appearance:none;
+  box-sizing:border-box;
+  max-width:100%;
+  min-width:0;
+  width:100%;
+}
+
+.en__ecardrecipients__futureDelivery input[type=date]::-webkit-date-and-time-value{
+  text-align:left;
 }
 
 @media screen and (max-width:700px){
@@ -4295,6 +4342,68 @@ button.en__eventOccurrence__select>label{
   justify-self:end;
 }
 
+.en__overlay--waitlist .en__overlay__popup{
+  top:15vh;
+  width:100%;
+}
+.en__overlay--waitlist .en__overlay__header{
+  background:var(--engrid__page_background-color);
+  border-bottom:unset;
+  border-radius:unset;
+}
+.en__overlay--waitlist .en__overlay__content{
+  background:var(--engrid__page_background-color);
+  padding:10px 20px;
+}
+.en__overlay--waitlist .en__overlay__content .en__button--confirm{
+  --button_background-color:var(--submit__button_background-color);
+  --button_border-color:var(--submit__button_border-color);
+  --button_color:var(--submit__button_color);
+  --button_background-color_hover:var(--submit__button_background-color_hover);
+  --button_border-color_hover:var(--submit__button_border-color_hover);
+  --button_color_hover:var(--submit__button_color_hover);
+  margin:auto;
+  min-width:100px;
+  padding:var(--button_padding);
+}
+.en__overlay--waitlist .en__waitlistCopy{
+  font-size:var(--h2_font-size);
+  font-weight:var(--h2_font-weight);
+  line-height:var(--h2_line-height);
+  margin-left:auto;
+  margin-right:auto;
+  max-width:400px;
+}
+.en__overlay--waitlist .en__waitlistForm{
+  margin-left:auto;
+  margin-right:auto;
+  max-width:475px;
+}
+.en__overlay--waitlist .en__field{
+  display:grid;
+  gap:8px;
+}
+.en__overlay--waitlist .en__overlay__actions{
+  display:flex;
+  flex-direction:row-reverse;
+  justify-content:space-between;
+  margin:16px auto;
+  max-width:450px;
+}
+.en__overlay--waitlist .en__overlay__actions .en__button{
+  min-width:120px;
+  padding:var(--button_padding);
+  text-transform:uppercase;
+}
+.en__overlay--waitlist .en__overlay__actions .en__button--submit{
+  --button_background-color:var(--submit__button_background-color);
+  --button_border-color:var(--submit__button_border-color);
+  --button_color:var(--submit__button_color);
+  --button_background-color_hover:var(--submit__button_background-color_hover);
+  --button_border-color_hover:var(--submit__button_border-color_hover);
+  --button_color_hover:var(--submit__button_color_hover);
+}
+
 @media screen and (max-width:600px){
   .en__ticket{
     display:flex;
@@ -4339,6 +4448,9 @@ button.en__eventOccurrence__select>label{
   .en__ticket__plus{
     margin-right:2rem;
   }
+}
+#engrid:has(.en__overlay--open) .content-footer,#engrid:has(.en__overlay--open) .content-footerSpacer,#engrid:has(.en__overlay--open) .content-header,#engrid:has(.en__overlay--open) .content-preFooter{
+  z-index:unset;
 }
 [data-engrid-errors=fancy] .en__field__error{
   background-color:var(--error__color);
@@ -4485,7 +4597,6 @@ figure.media-with-attribution figattribution,figure.media-with-attribution figat
   font-weight:var(--media-attribution__font-weight);
 }
 figure.media-with-attribution figattribution a,figure.media-with-attribution figattribution a:focus,figure.media-with-attribution figattribution a:hover{
-  -webkit-text-decoration:none;
   text-decoration:none;
 }
 figure.media-with-attribution figattribution{
@@ -4682,7 +4793,7 @@ body:not(#en__pagebuilder) img:not([src]):not([srcset]){
 #goMonthly h1{
   margin-top:0;
 }
-#goMonthly h1 .upsell_suggestion{
+#goMonthly h1 .upsell_suggestion,#goMonthly h1 .upsell_suggestion_frequency{
   font-weight:700;
 }
 #goMonthly .upsellOtherAmountLabel p{
@@ -4781,7 +4892,6 @@ body:not(#en__pagebuilder) img:not([src]):not([srcset]){
   display:flex;
   justify-content:center;
   position:relative;
-  -webkit-text-decoration:none;
   text-decoration:none;
   width:100%;
 }
@@ -4972,6 +5082,140 @@ div[id^=nb-field-].nb-success input{
   display:none !important;
 }
 
+body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation .background-rotation-layer{
+  background-position:100% 0;
+  background-repeat:no-repeat;
+  background-size:cover;
+  height:100vh;
+  left:0;
+  object-position:top right;
+  opacity:0;
+  pointer-events:none;
+  position:fixed;
+  top:0;
+  transition:opacity var(--background-rotation-transition-duration, .5s) ease-in-out;
+  width:100vw;
+  z-index:0;
+}
+body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation .background-rotation-layer.active{
+  opacity:1;
+}
+body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation .background-rotation-layer.active:not(.background-rotation-outgoing){
+  z-index:1;
+}
+body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation.background-rotation-transition .background-rotation-layer{
+  will-change:opacity;
+}
+body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation img.background-rotation-layer{
+  display:block;
+  object-fit:cover;
+}
+body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation figure.background-rotation-layer.active{
+  pointer-events:auto;
+}
+body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation figure.media-with-attribution:not(.background-rotation-layer){
+  background-image:none;
+  display:block;
+  position:static;
+}
+body:not(#en__pagebuilder)[data-engrid-background-rotation] .page-backgroundImage:before{
+  background-image:var(--background-rotation-image, none);
+}
+body:not(#en__pagebuilder)[data-engrid-layout=centercenter1col] .page-backgroundImage .page-background-rotation .background-rotation-layer,body:not(#en__pagebuilder)[data-engrid-layout=centercenter2col] .page-backgroundImage .page-background-rotation .background-rotation-layer{
+  background-position:top;
+  object-position:top center;
+}
+body:not(#en__pagebuilder)[data-engrid-layout=centerright1col] .page-backgroundImage .page-background-rotation .background-rotation-layer,body:not(#en__pagebuilder)[data-engrid-layout=rightright1col] .page-backgroundImage .page-background-rotation .background-rotation-layer{
+  background-position:0 0;
+  object-position:top left;
+}
+
+@media screen and (max-width:499px){
+  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation{
+    overflow:hidden;
+    position:relative;
+  }
+  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation .background-rotation-layer,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation .background-rotation-layer{
+    display:none !important;
+  }
+  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation .background-rotation-layer.active,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation .background-rotation-layer.active{
+    background-image:none !important;
+    display:block !important;
+    height:auto;
+    left:0;
+    opacity:1;
+    position:absolute;
+    top:0;
+    width:100%;
+  }
+  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation .background-rotation-layer.background-rotation-flow,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation .background-rotation-layer.background-rotation-flow{
+    position:static;
+  }
+  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation .background-rotation-layer.background-rotation-outgoing,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation .background-rotation-layer.background-rotation-outgoing{
+    z-index:0;
+  }
+  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation figure.background-rotation-layer.active,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation figure.background-rotation-layer.active{
+    height:auto !important;
+    transform:none !important;
+    width:100% !important;
+  }
+  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation figure.background-rotation-layer.background-rotation-flow,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation figure.background-rotation-layer.background-rotation-flow{
+    position:relative !important;
+  }
+  body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-background-image] .page-backgroundImage .page-background-rotation img.background-rotation-layer.active,body:not(#en__pagebuilder)[data-engrid-page-background=image][data-replace-banner-with-background=if-banner-empty][data-engrid-body-banner=empty] .page-backgroundImage .page-background-rotation img.background-rotation-layer.active{
+    object-fit:fill;
+  }
+}
+.background-rotation-controls{
+  display:none;
+}
+
+body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls{
+  display:flex;
+  gap:.5rem;
+  position:fixed;
+  right:1rem;
+  top:1rem;
+  z-index:8;
+}
+body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button{
+  align-items:center;
+  background-color:#000000bf;
+  border:none;
+  border-radius:50%;
+  color:#fff;
+  cursor:pointer;
+  display:flex;
+  height:40px;
+  justify-content:center;
+  padding:0;
+  transition:background-color .15s ease-in-out;
+  width:40px;
+}
+body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:focus-visible,body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:hover{
+  background-color:#000000bf;
+}
+body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:2px;
+}
+body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:disabled{
+  cursor:default;
+  opacity:.4;
+}
+body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:disabled:focus-visible,body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button:disabled:hover{
+  background-color:#00000080;
+}
+body:not(#en__pagebuilder)[data-engrid-background-rotation=active] .background-rotation-controls button svg{
+  height:20px;
+  width:20px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  body:not(#en__pagebuilder) .page-backgroundImage .page-background-rotation .background-rotation-layer{
+    transition:none;
+  }
+}
 [data-engrid-theme]{
   --premium__border-width:0;
   --premium__border-color:none;
@@ -5027,6 +5271,11 @@ div[id^=nb-field-].nb-success input{
   padding:0;
   width:var(--radio_width);
 }
+[data-engrid-theme] .en__pg__select:has(input:focus){
+  border-radius:30px;
+  outline:3px solid var(--focus_outline_color, #086ce7);
+  outline-offset:var(--focus_outline_offset, 2px);
+}
 [data-engrid-theme] .en__pg__display{
   grid-area:en__pg__display;
   padding:0;
@@ -5081,7 +5330,6 @@ a.skip-link{
   z-index:2147483647 !important;
 }
 a.skip-link:active,a.skip-link:focus,a.skip-link:hover{
-  -webkit-text-decoration:underline !important;
   text-decoration:underline !important;
 }
 a.skip-link:not(:focus):not(:active){
@@ -5344,6 +5592,10 @@ body:not(#en__pagebuilder):not([data-engrid-debug]) [class*=showifamount].animat
 }
 [data-engrid-theme][data-engrid-page-type=supporterhub] .en__hubPledge__validationFail .en__field__element{
   border:none;
+}
+[data-engrid-theme][data-engrid-page-type=supporterhub] .en__component--hubgadget:focus{
+  outline:3px solid var(--focus_outline_color, #086ce7);
+  outline-offset:var(--focus_outline_offset, 2px);
 }
 @media screen and (max-width:768px){
   [data-engrid-theme] .en__hubPledge__buttons{
@@ -5667,7 +5919,6 @@ body[data-engrid-exit-intent-lightbox=open]{
   padding-bottom:var(--exit-intent__button_padding-bottom);
   padding-top:var(--exit-intent__button_padding-top);
   text-align:center;
-  -webkit-text-decoration:none;
   text-decoration:none;
   text-transform:var(--exit-intent__button_text-transform);
   transition:all .3s ease-in-out;
@@ -5710,7 +5961,6 @@ body[data-engrid-exit-intent-lightbox=open]{
   color:#016da3;
   cursor:pointer;
   font-weight:700;
-  -webkit-text-decoration:underline;
   text-decoration:underline;
 }
 .engrid-reset-welcome-back svg,.engrid-welcome-back-clear svg{
@@ -5760,6 +6010,17 @@ body:not(#en__pagebuilder):not([data-engrid-debug]):not([data-engrid-embedded-ec
 
 body:not(#en__pagebuilder) .checkbox-label{
   display:none;
+}
+
+.engrid-custom-checkbox-label{
+  box-sizing:border-box;
+  width:100%;
+}
+.engrid-custom-checkbox-label p:first-child{
+  margin-top:0;
+}
+.engrid-custom-checkbox-label p:last-child{
+  margin-bottom:0;
 }
 [data-engrid-theme]{
   --engrid__page_padding:0px;
@@ -6172,7 +6433,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=centercenter1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=centercenter1col][data-engrid-embedded] [class*=page-backgroundImage]{
+  [data-engrid-layout=centercenter1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=centercenter1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
     display:none !important;
   }
 }
@@ -6352,7 +6613,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=centerleft1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=centerleft1col][data-engrid-embedded] [class*=page-backgroundImage]{
+  [data-engrid-layout=centerleft1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=centerleft1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
     display:none !important;
   }
 }
@@ -6430,7 +6691,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=centerright1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=centerright1col][data-engrid-embedded] [class*=page-backgroundImage]{
+  [data-engrid-layout=centerright1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=centerright1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
     display:none !important;
   }
 }
@@ -6483,7 +6744,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=leftleft1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=leftleft1col][data-engrid-embedded] [class*=page-backgroundImage]{
+  [data-engrid-layout=leftleft1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=leftleft1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
     display:none !important;
   }
 }
@@ -6561,7 +6822,7 @@ body[data-engrid-embedded]:not(#en__pagebuilder) .hideif-iframe{
   [data-engrid-layout=rightright1col]:not(#en__pagebuilder) .page-backgroundImage{
     grid-row:page-start /  content-footerSpacer-end;
   }
-  [data-engrid-layout=rightright1col][data-engrid-embedded] [class*=page-backgroundImage]{
+  [data-engrid-layout=rightright1col][data-engrid-embedded] [class*=page-backgroundImage],[data-engrid-layout=rightright1col][data-engrid-use-body-banner-background]:not(#en__pagebuilder) .body-banner{
     display:none !important;
   }
 }
@@ -7359,7 +7620,6 @@ body[data-engrid-debug]:before{
   color:#000;
   cursor:pointer;
   text-align:center;
-  -webkit-text-decoration:none;
   text-decoration:none;
 }
 .debug-panel__link-label .debug-panel__edit-link,.debug-panel__link-label .debug-panel__edit-link:hover{
@@ -7481,14 +7741,14 @@ body[data-engrid-debug]:before{
   outline-style:solid;
   z-index:1000;
 }
-#en__pagebuilder [class*=engrid__supporter i],#en__pagebuilder [class*=giveBySelect-ach i],#en__pagebuilder [class*=giveBySelect-card i],#en__pagebuilder [class*=giveBySelect-check i],#en__pagebuilder [class*=giveBySelect-digitalwallet i],#en__pagebuilder [class*=giveBySelect-paypal i],#en__pagebuilder [class*=giveBySelect-paypaltouch i],#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i],#en__pagebuilder [class*=inmem-n i],#en__pagebuilder [class*=inmem-y i]{
+#en__pagebuilder [class*=engrid__supporter i],#en__pagebuilder [class*=giveBySelect-ach i],#en__pagebuilder [class*=giveBySelect-card i],#en__pagebuilder [class*=giveBySelect-check i],#en__pagebuilder [class*=giveBySelect-digitalwallet i],#en__pagebuilder [class*=giveBySelect-paypal i],#en__pagebuilder [class*=giveBySelect-paypaltouch i],#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i],#en__pagebuilder [class*=inmem-n i],#en__pagebuilder [class*=inmem-y i],#en__pagebuilder [class*=shipenabled-n i],#en__pagebuilder [class*=shipenabled-y i]{
   background-color:rgba(0,0,255,.102) !important;
 }
-#en__pagebuilder [class*=engrid__supporter i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-ach i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-card i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-check i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-digitalwallet i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-paypal i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-paypaltouch i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=inmem-n i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=inmem-y i].pboAdvancedRow__preview .en__component--column{
+#en__pagebuilder [class*=engrid__supporter i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-ach i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-card i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-check i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-digitalwallet i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-paypal i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-paypaltouch i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=inmem-n i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=inmem-y i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=shipenabled-n i].pboAdvancedRow__preview .en__component--column,#en__pagebuilder [class*=shipenabled-y i].pboAdvancedRow__preview .en__component--column{
   outline-color:#00f !important;
   z-index:1;
 }
-#en__pagebuilder [class*=engrid__supporter i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-ach i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-card i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-check i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-digitalwallet i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-paypal i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-paypaltouch i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i] .en__mandatory,#en__pagebuilder [class*=inmem-n i] .en__mandatory,#en__pagebuilder [class*=inmem-y i] .en__mandatory{
+#en__pagebuilder [class*=engrid__supporter i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-ach i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-card i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-check i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-digitalwallet i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-paypal i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-paypaltouch i] .en__mandatory,#en__pagebuilder [class*=giveBySelect-stripedigitalwallet i] .en__mandatory,#en__pagebuilder [class*=inmem-n i] .en__mandatory,#en__pagebuilder [class*=inmem-y i] .en__mandatory,#en__pagebuilder [class*=shipenabled-n i] .en__mandatory,#en__pagebuilder [class*=shipenabled-y i] .en__mandatory{
   outline:5px solid #f12222;
 }
 #en__pagebuilder .live-giving-amount,#en__pagebuilder .live-giving-frequency,#en__pagebuilder .live-giving-upsell-amount,#en__pagebuilder .live-giving-upsell-amount-raw{
@@ -7727,7 +7987,6 @@ body[data-engrid-debug]:before{
   padding-right:0;
   padding-top:var(--fields_spacing-block);
   text-align:left;
-  -webkit-text-decoration:none;
   text-decoration:none;
   white-space:nowrap;
 }
@@ -8019,7 +8278,6 @@ body[data-engrid-debug]:before{
   font-size:16px;
   position:relative;
   text-align:center;
-  -webkit-text-decoration:none;
   text-decoration:none;
 }
 [data-engrid-theme=spcai][data-engrid-layout=leftleft1col] .content-footer .footer-links a:not(:last-child){
@@ -8512,7 +8770,6 @@ body[data-engrid-debug]:before{
   border:#0000;
 }
 [data-engrid-theme=spcai] #en__upsellModal__no button span{
-  -webkit-text-decoration:underline;
   text-decoration:underline;
 }
 
@@ -8870,7 +9127,6 @@ body[data-engrid-debug]:before{
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-payment-type=daf] .back-link,[data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-payment-type=paypaltouch] .back-link,[data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-engrid-payment-type=stripedigitalwallet] .back-link{
   display:block;
-  -webkit-text-decoration:none;
   text-decoration:none;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep][data-conditonally-hide-show-digital-wallet-elements] #en__digitalWallet .en__digitalWallet__container{
@@ -8959,6 +9215,592 @@ body[data-engrid-debug]:before{
   margin-top:1rem;
 }
 [data-engrid-theme=spcai][data-engrid-subtheme=multistep] .en__component--row--1:first-of-type .en__component--copyblock:first-of-type h2{
+  margin-bottom:0;
+  margin-top:0;
+}
+
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]{
+  --color_primary:#163f58;
+  --h2_font-size:24px;
+  --h2_font-weight:700;
+  --h2_line-height:54px;
+  --h2_text-transform:uppercase;
+  --h2_margin:0 0;
+  --default_font-size:16px;
+  --p_font-size:16px;
+  --p_line-height:22px;
+  --recurring-frequency__button_font-size:24px;
+  --recurring-frequency__button_font-weight:700;
+  --recurring-frequency__button_line-height:54px;
+  --recurring-frequency__button_padding:8.5px 0;
+  --donation-amount__button_font-size:24px;
+  --donation-amount__button_font-weight:700;
+  --donation-amount__button_line-height:50px;
+  --donation-amount__button_padding:0 0;
+  --label_font-size:16px;
+  --input_padding:8px 10px;
+  --input_font-size:20px;
+  --checkbox_font-size:16px;
+  --checkbox_line-height:22px;
+  --error_color:#e22028;
+  --fields_spacing-inline:5px;
+  --fields_spacing-block:4px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] h2{
+  margin-bottom:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]#en__pagebuilder #engrid,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not([data-engrid-embedded]){
+  margin:0 auto;
+  max-width:270px;
+  padding-bottom:1rem;
+  padding-top:1rem;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not([data-engrid-embedded]):before{
+  content:none;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]#en__pagebuilder #engrid>.en__component--row .en__component,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder):not([data-engrid-embedded]) #engrid>.en__component--row .en__component{
+  padding:0;
+  width:100%;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .mt-10{
+  margin-top:10px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .mt-20{
+  margin-top:20px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .summary-table{
+  display:flex;
+  flex-wrap:wrap;
+  font-size:12px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .summary-table dt{
+  border-bottom:1px solid #2e2e2c33;
+  font-weight:700;
+  padding:5px 0;
+  width:100px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .summary-table dd{
+  border-bottom:1px solid #2e2e2c33;
+  margin-left:auto;
+  padding:5px 0;
+  text-align:right;
+  width:calc(100% - 100px);
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] input[type=checkbox]+label{
+  align-items:flex-start;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--ccexpire .en__field__input--vgs,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--ccnumber .en__field__input--vgs,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--ccvv .en__field__input--vgs{
+  height:54px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__component.en__component--copyblock>*{
+  padding-left:var(--fields_spacing-inline);
+  padding-right:var(--fields_spacing-inline);
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__component--formblock,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__component--svblock,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__registrants__registrantDetails{
+  margin-left:0;
+  margin-right:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .radio-to-buttons_recurrfreq .en__field--recurrfreq.en__field--radio .en__field__item input[value=MONTHLY]+label:before{
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='19' height='18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 6.251C18 11.2 12.4 15 9.7 15.998 6.867 14.874 1 11.35 1 6.251 1 .16 8.5-.403 9.7 3.721 10.9-.497 18 .066 18 6.25Z' stroke='%23163f58' stroke-width='2'/%3E%3C/svg%3E");
+  background-size:contain;
+  height:20px;
+  margin-right:0;
+  margin-top:2px;
+  width:20px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio .en__field__element .en__field__item label:after{
+  font-family:var(--donation-amount__button_font-family);
+  font-size:var(--donation-amount__button_font-size);
+  line-height:var(--donation-amount__button_line-height);
+  opacity:1;
+  padding-top:unset;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio .en__field__element .en__field__item label .engrid-currency-symbol{
+  font-size:var(--donation-amount__button_font-size);
+  margin-right:2px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--radio .en__field__element .en__field__item--other{
+  --input_font-size:24px;
+  --input_font-weight:700;
+  text-transform:uppercase;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field__input.en__field__input--other::placeholder{
+  color:#5c5d5f;
+  opacity:.5;
+  text-transform:uppercase;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field__input--select{
+  background-origin:initial;
+  background-position:right 5px center;
+  padding-right:24px;
+  text-overflow:ellipsis;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .upsell-message p,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .upsell-message p.recurring-frequency-y-hide{
+  font-size:17px;
+  letter-spacing:4%;
+  line-height:20px;
+  margin-bottom:20px !important;
+  margin-top:11px !important;
+  text-align:left;
+  width:280px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .upsell-message .recurring-frequency-y-hide:before{
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg width='46' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M44.272.68c-.124-.317-.539-.488-.896-.412a1 1 0 0 0-.094.026 1 1 0 0 0-.248-.016 3 3 0 0 0-.405.06l-.286.057-.007.001a31 31 0 0 1-.535.107q-.285.054-.566.114L41.1.644l-.106.02c-.243.048-.486.095-.721.155q-.466.125-.939.245c-.203.054-.402.12-.602.187l-.263.087c-.25.082-.5.183-.74.288l-.15.064-.003.002q-.31.133-.616.271l-.098.042-.003.001c-.162.069-.328.139-.47.23a.77.77 0 0 0-.364.554c-.041.367.203.718.634.779.293.041.613-.085.775-.303q.145-.068.291-.13.11-.045.218-.095.165-.074.332-.145l.016-.007.144-.062c.184-.076.368-.152.556-.216l.204-.066.161-.053.366-.12.402-.104.01-.002.01-.003.402-.104c.163-.044.33-.078.495-.113h.002l.249-.052.653-.133L43.1 2.946l.04.304c.063.459.092.92.12 1.38l.009.137c.037.61.078 1.22.137 1.83.053.527.114 1.061.218 1.585.075.362.545.576.928.494a.78.78 0 0 0 .468-.299.64.64 0 0 0 .095-.519l-.01-.048-.009-.048c.008.031.011.062.019.089a24 24 0 0 1-.276-2.589 55 55 0 0 0-.075-1.056v-.002a21 21 0 0 0-.117-1.273q-.02-.144-.037-.29a9 9 0 0 0-.08-.56l-.093-.479V1.6l-.093-.477a1.2 1.2 0 0 0-.072-.442Z' fill='%23163f58' stroke='%23163f58' stroke-width='.5'/%3E%3Cpath d='M1 19.668c6.733 0 14.026.22 20.716-2.103 5.867-2.037 11.203-4.292 15.625-8.412 2.005-1.867 3.797-5.038 5.135-7.32' stroke='%23163f58' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  content:"";
+  height:20.61px;
+  left:205px;
+  position:absolute;
+  top:6px;
+  transform:rotate(3.47deg);
+  width:44.38px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .pay-methods-tip p{
+  margin-block-end:14px;
+  margin-block-start:14px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .pay-methods-tip .card-logos{
+  text-align:center;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .pay-methods-tip .orpayby{
+  align-items:center;
+  display:flex;
+  font-family:Oswald,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size:20px;
+  font-weight:700;
+  gap:8px;
+  padding-left:var(--fields_spacing-inline);
+  padding-right:var(--fields_spacing-inline);
+  text-align:center;
+  text-transform:uppercase;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .pay-methods-tip .orpayby:after,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .pay-methods-tip .orpayby:before{
+  border-bottom:2px solid rgba(22,63,88,.349);
+  content:"";
+  flex:1;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .thank-you-screen .thank-you-borders{
+  border-radius:3px;
+  margin-left:auto;
+  margin-right:auto;
+  max-width:228px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .thank-you-screen .thank-you-borders:after,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .thank-you-screen .thank-you-borders:before{
+  background-color:var(--color_primary);
+  border-radius:4px;
+  content:"";
+  display:block;
+  height:4px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .thank-you-screen .thank-you-borders h1{
+  text-wrap:wrap;
+  font-family:Oswald,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size:52px;
+  font-weight:700;
+  letter-spacing:0;
+  line-height:60px;
+  margin-bottom:0;
+  margin-top:24px;
+  max-width:228px;
+  text-align:center;
+  text-transform:uppercase;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .thank-you-screen .thank-you-borders h2{
+  font-family:Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:0;
+  line-height:48px;
+  margin-bottom:24px;
+  margin-top:0;
+  text-align:center;
+  text-transform:uppercase;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .thank-you-screen .thank-you-image{
+  bottom:-256px;
+  position:absolute;
+  text-align:center;
+  width:240px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--validationFailed .en__field__error{
+  display:none;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component{
+  position:relative;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation{
+  align-items:flex-start;
+  bottom:-24px;
+  display:flex;
+  gap:10px;
+  justify-content:space-between;
+  padding-left:5px;
+  padding-right:5px;
+  position:absolute;
+  width:100%;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button{
+  align-items:center;
+  backface-visibility:hidden;
+  border:0;
+  border-radius:var(--button_border-radius);
+  color:#fff;
+  cursor:pointer;
+  display:flex;
+  font-family:Roboto,sans-serif;
+  font-size:20px;
+  font-stretch:normal;
+  font-style:normal;
+  font-weight:700;
+  justify-content:center;
+  letter-spacing:.84px;
+  margin-bottom:0;
+  min-width:60px;
+  padding:0 12px;
+  position:relative;
+  transform:translateZ(0);
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button small{
+  font-size:11px;
+  font-weight:700;
+  line-height:100%;
+  margin-top:9px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button .section-navigation__content{
+  align-items:center;
+  display:inline-flex;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__previous{
+  border:2px solid var(--color_primary);
+  color:var(--color_primary);
+  height:75px;
+  transition:color .3s ease-in-out,border-color .3s ease-in-out;
+  width:70px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__previous svg path{
+  transition:fill .3s ease-in-out;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__previous:hover{
+  border-color:#1c4f6e;
+  color:#1c4f6e;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__previous:hover svg path{
+  fill:#1c4f6e;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__next,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__submit{
+  color:#fff;
+  font-family:Oswald,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size:24px;
+  line-height:54px;
+  opacity:1;
+  padding:10.5px 0;
+  width:100%;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__next svg,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__submit svg{
+  transform:translateX(15px);
+  transition:transform .3s ease-in-out;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__next{
+  background-color:var(--color_primary);
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__next .section-navigation__content{
+  left:0;
+  position:relative;
+  transition:left .75s cubic-bezier(.34, 1.56, .64, 1);
+  transition:left .75s linear(0, .009, .035 2.1%, .141 4.4%, .281 6.7%, .723 12.9%, .938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, .991 47.1%, .977 51%, .974 53.8%, .975 57.1%, .997 69.8%, 1.003 76.9%, 1.004 83.8%, 1);
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__next:hover .section-navigation__content{
+  left:12px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button.section-navigation__submit{
+  background-color:#e22028;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-navigation button[data-section-id="0"]{
+  width:100%;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component .section-count{
+  bottom:-52px;
+  color:var(--color_primary);
+  font-size:16px;
+  font-stretch:normal;
+  font-style:normal;
+  font-weight:700;
+  letter-spacing:0;
+  position:absolute;
+  right:5px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] form.en__component>.en__component>.en__component{
+  min-width:auto;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--ccnumber input{
+  background-position:50%;
+  background-size:30px !important;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--checkbox>label{
+  display:none !important;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .credit-card-flags{
+  margin-bottom:25px;
+  text-align:center;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded]{
+  height:100vh;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] #launcher{
+  display:none;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] form.en__component{
+  display:grid;
+  grid-auto-flow:column;
+  margin:0 auto;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] form.en__component>.en__component{
+  height:100vh;
+  padding:0;
+  width:310px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] form.en__component>.en__component>.en__component{
+  height:calc(100% - 4rem);
+  padding-top:12px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] form.en__component .en__component--row>.en__component--column .en__component:first-of-type>:first-child{
+  margin-top:0;
+  padding-top:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] form.en__component .en__component--row>.en__component--column .en__component:last-of-type>:last-child{
+  margin-bottom:0;
+  padding-bottom:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] .new-signup-lightbox form.en__component>.en__component>.en__component{
+  height:calc(100% - 2rem);
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] .en__errorHeader,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] .en__errorList,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-embedded] .en__submit{
+  display:none;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .has-error .en__field__input,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .has-error .en__field__input--other,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .has-error label{
+  background-color:#ffeeeb66;
+  border-color:var(--error__color) !important;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] .en__component--imageblock{
+  border-radius:100%;
+  height:150px;
+  position:relative;
+  width:150px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] .en__component--imageblock img{
+  border-radius:100%;
+  height:150px !important;
+  object-fit:cover;
+  width:150px !important;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] .en__component--imageblock:after,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] .en__component--imageblock:before{
+  content:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="46" height="38" fill="none" viewBox="0 0 46 38"><path fill="%23C92533" d="M33.707 0C29.268 0 25.174 2.166 23 5.664 20.826 2.166 16.732 0 12.293 0 5.504 0 0 5.693 0 11.83 0 27.245 23 38 23 38s23-10.755 23-26.17C46 5.693 40.496 0 33.707 0z"/></svg>');
+  height:38px;
+  position:absolute;
+  right:0;
+  top:0;
+  width:46px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] form.en__component>.en__component{
+  margin:auto;
+  padding:100px 30px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] footer{
+  background-image:url('data:image/svg+xml;utf8,<svg fill="none" height="132" viewBox="0 0 400 132" width="400" xmlns="http://www.w3.org/2000/svg"> <path d="M0 110.582L400 0v128c0 2.209-1.791 4-4 4H0v-21.418z" fill="%23A3D1D6"></path> <path d="M0 73.5L400 132H0V73.5z" fill="%23007cf9"></path></svg>');
+  background-position:bottom;
+  background-repeat:no-repeat;
+  background-size:contain;
+  bottom:0;
+  height:132px;
+  left:0;
+  position:fixed;
+  width:100vw;
+  z-index:-1;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] footer svg{
+  display:none;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] h1{
+  color:var(--h1_color);
+  font-family:var(--h1_font-family);
+  font-size:50px;
+  font-stretch:normal;
+  font-style:normal;
+  font-weight:900;
+  letter-spacing:normal;
+  line-height:.83;
+  margin-bottom:15px;
+  text-align:left;
+  white-space:nowrap;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] p{
+  font-size:16px;
+  font-stretch:normal;
+  font-style:normal;
+  font-weight:400;
+  letter-spacing:normal;
+  line-height:1.63;
+  text-align:left;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-thank-you] p.small{
+  font-size:12px;
+  font-weight:500;
+  line-height:1.5;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--emailAddress{
+  position:relative;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--emailAddress .en__field__error{
+  background-color:var(--error__color);
+  border-bottom-left-radius:3px;
+  border-bottom-right-radius:3px;
+  color:#fff;
+  display:block;
+  font-size:.75rem;
+  line-height:1;
+  margin-top:-5px;
+  padding:5px 10px;
+  transition:opacity .3s ease-in-out,bottom .3s ease-in-out,z-index .3s ease-in-out;
+  width:100%;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .mobile-logo{
+  margin-top:-15px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .mobile-title-block h2{
+  margin-bottom:5px;
+  margin-top:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .mobile-title-block p{
+  line-height:1.2;
+  margin:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .inline-upsell-box{
+  margin:15px auto 0;
+  min-height:92px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .inline-upsell-box strong{
+  font-weight:600;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .inline-upsell-box.recurring-frequency-y-show{
+  padding:4px 8px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .inline-upsell-box.recurring-frequency-y-show em,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .inline-upsell-box.recurring-frequency-y-show strong{
+  font-size:12px;
+  line-height:1.6;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .giveBySelect-card label{
+  display:flex !important;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--opt-universal-opt-in{
+  margin-top:15px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .donation-summary{
+  background:#b8cf9533;
+  border:0;
+  border-radius:4px;
+  line-height:160%;
+  margin-bottom:15px;
+  padding:20px 25px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .donation-summary p{
+  font-size:16px;
+  font-weight:400;
+  margin:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .back-link{
+  align-items:center;
+  border:2px solid var(--color_primary);
+  border-radius:var(--button_border-radius);
+  bottom:-24px;
+  color:var(--color_primary);
+  cursor:pointer;
+  display:none;
+  height:75px;
+  justify-content:center;
+  left:5px;
+  padding:0 12px;
+  position:absolute;
+  text-decoration:none;
+  transition:color .3s ease-in-out,border-color .3s ease-in-out;
+  width:70px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .back-link svg path{
+  transition:fill .3s ease-in-out;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .back-link:hover{
+  border-color:#1c4f6e;
+  color:#1c4f6e;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .back-link:hover svg path{
+  fill:#1c4f6e;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=daf] [data-last-section=true] .section-navigation,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=paypaltouch] [data-last-section=true] .section-navigation,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=stripedigitalwallet] [data-last-section=true] .section-navigation{
+  display:none !important;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=daf] .back-link,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=paypaltouch] .back-link,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-engrid-payment-type=stripedigitalwallet] .back-link{
+  display:flex;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2][data-conditonally-hide-show-digital-wallet-elements] #en__digitalWallet .en__digitalWallet__container{
+  margin-top:0 !important;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .digital-wallets-wrapper{
+  align-items:center;
+  bottom:15px;
+  display:flex;
+  flex-direction:column-reverse;
+  justify-content:center;
+  position:absolute;
+  width:100%;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .digital-wallets-wrapper .back-link{
+  background-color:#fff;
+  height:45px;
+  position:absolute;
+  top:0;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .digital-wallets-wrapper #en__digitalWallet{
+  position:absolute;
+  right:0;
+  top:0;
+  width:calc(100% - 75px);
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] #en__field_transaction_paycurrency{
+  font-size:14px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--recurrfreq .en__field__item label{
+  font-size:1.33248em;
+  font-weight:900;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .highlight{
+  padding:.5rem 1rem;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .highlight:after,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .highlight:before,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder) .show-on-mobile{
+  display:none;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder) .hide-on-mobile,[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .show-on-mobile{
+  display:block;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2]:not(#en__pagebuilder).is-mobile .hide-on-mobile{
+  display:none;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] iframe[title^=recaptcha]{
+  left:-1px;
+  position:fixed;
+  top:-1px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__captcha{
+  margin-top:15px;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__field--creditCardHolderName{
+  display:none;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .transaction-fee-opt-in{
+  margin-top:2rem;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__component--row--1:first-of-type .en__component--copyblock:first-of-type h1{
+  margin-bottom:0;
+  margin-top:1rem;
+}
+[data-engrid-theme=spcai][data-engrid-subtheme=multistep-v2] .en__component--row--1:first-of-type .en__component--copyblock:first-of-type h2{
   margin-bottom:0;
   margin-top:0;
 }
